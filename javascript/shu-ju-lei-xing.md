@@ -8,18 +8,17 @@ JS 中分为七种内置类型，七种内置类型又分为两大类型：基�
 
 对于基本类型来说，如果使用字面量的方式，那么这个变量只是个字面量，只有在必要的时候才会转换为对应的类型
 
-```
+```javascript
 let a = 111 // 这只是字面量，不是 number 类型
 a.toString() // 使用时候才会转换为对象类型 
 ```
 
 对象（Object）是引用类型，在使用过程中会遇到浅拷贝和深拷贝的问题。
 
-```
+```javascript
 let a = { name: 'FE' } 
 let b = a 
 b.name = 'EF' 
 console.log(a.name) // EF
 ```
 
-## Typeof
