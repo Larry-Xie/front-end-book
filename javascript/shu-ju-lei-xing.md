@@ -1,5 +1,7 @@
 # 数据类型
 
+## 1. JS 数据类型
+
 JS 中分为七种内置类型，七种内置类型又分为两大类型：基本类型和对象（Object）。
 
 基本类型有六种： `null`，`undefined`，`boolean`，`number`，`string`，`symbol`。
@@ -22,3 +24,6 @@ b.name = 'EF'
 console.log(a.name) // EF
 ```
 
+## 2. Array
+
+[https://mp.weixin.qq.com/s/8F-IEQTNsg4sVwriXSH-Zw](https://mp.weixin.qq.com/s/8F-IEQTNsg4sVwriXSH-Zw)
