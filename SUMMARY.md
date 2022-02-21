@@ -8,7 +8,7 @@
   * [浏览器前缀](liu-lan-qi/liu-lan-qi-qian-zhui.md)
 * [JavaScript](javascript/README.md)
   * [ECMAScript](javascript/ecmascript.md)
-  * [数据类型](javascript/shu-ju-lei-xing.md)
+  * [JS数据类型](javascript/js-shu-ju-lei-xing.md)
 * [CSS](css.md)
 * [HTML](html.md)
 * [性能优化](xing-neng-you-hua.md)
