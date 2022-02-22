@@ -3,5 +3,6 @@
 * webassembly
 * serverless
 * PWA
+* micro-frontend
 * deno
 * graph ql
