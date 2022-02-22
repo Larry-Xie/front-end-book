@@ -2,5 +2,6 @@
 
 * webassembly
 * serverless
+* PWA
 * deno
 * graph ql
