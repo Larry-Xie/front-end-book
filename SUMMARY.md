@@ -2,7 +2,7 @@
 
 * [引言](README.md)
 * [计算机网络](ji-suan-ji-wang-luo/README.md)
-  * [网络模型](ji-suan-ji-wang-luo/wang-luo-mo-xing.md)
+  * [协议模型](ji-suan-ji-wang-luo/xie-yi-mo-xing.md)
   * [应用层](ji-suan-ji-wang-luo/ying-yong-ceng.md)
   * [传输层](ji-suan-ji-wang-luo/chuan-shu-ceng.md)
   * [网络层](ji-suan-ji-wang-luo/wang-luo-ceng.md)
