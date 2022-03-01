@@ -2,9 +2,9 @@
 
 ## 模型概览
 
-![TCP/IP 模型和 OSI 模型对应关系](<../.gitbook/assets/image (1).png>)
+![TCP/IP 模型和 OSI 模型对应关系](<../.gitbook/assets/image (1) (1).png>)
 
-![网络模型](<../.gitbook/assets/image (2).png>)
+![网络模型](<../.gitbook/assets/image (2) (1).png>)
 
 ## 模型介绍
 
