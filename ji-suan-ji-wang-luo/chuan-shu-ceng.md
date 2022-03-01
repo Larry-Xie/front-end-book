@@ -26,7 +26,7 @@ UDP协议的要点如下：
 
 因为 UDP 是基于无连接的协议，所以也就没有 TCP 那么复杂。因此 UDP 的头部开销小，只有八字节，相比 TCP 的至少二十字节要少得多，在传输数据报文时是很高效的。
 
-![UDP Header](<../.gitbook/assets/image (5) (1).png>)
+![UDP Header](<../.gitbook/assets/image (5) (1) (1).png>)
 
 UDP 头部包含了以下几个数据：
 
@@ -60,7 +60,7 @@ TCP 称为传输控制协议（TCP，Transmission Control Protocol）。TCP 是�
 
 ![TCP Header](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/22be114f0cc0466689e18677ceca189f\~tplv-k3u1fbpfcp-watermark.image)
 
-![](<../.gitbook/assets/image (4).png>)
+![](<../.gitbook/assets/image (4) (1).png>)
 
 TCP 首部如上图所示，比 UDP 首部要复杂很多。TCP 段的首部长度最短是20B ，最长为60字节。但是长度必须为4B的整数倍。其中的重要字段：
 
