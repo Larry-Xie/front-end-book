@@ -106,13 +106,13 @@ HTTPS 如果使用对称加密的弊端在于私钥还是需要通过网络从�
 7. 服务器用对称加密密钥来加密传输的内容，并传输给客户端；
 8. 客户端和服务器通过对称加密的方式来进行传输。
 
-![HTTPS 流程](<../../.gitbook/assets/image (2).png>)
+![HTTPS 流程](<../../.gitbook/assets/image (2) (1).png>)
 
 ## SSL & TLS
 
 HTTPS 相比 HTTP 最大的不同就是多了一层 SSL (Secure Sockets Layer 安全套接层)或 TLS (Transport Layer Security 安全传输层协议)。有了这个安全层，就确保了互联网上通信双方的通信安全。
 
-![HTTP vs HTTPS](<../../.gitbook/assets/image (6).png>)
+![HTTP vs HTTPS](<../../.gitbook/assets/image (6) (1).png>)
 
 SSL 和 TLS 协议通过为通信双方提供识别和认证通道来保证通信的机密性和数据完整性。TLS 协议是从SSL 3.0协议演变而来的，现在 **SSL 已经被 TLS 取代**，所以现在的 HTTPS 可以看作是基于 TLS 的。类似于 TCP 建立连接时的三次握手，HTTPS 的启动过程也需要进行 TLS 握手来进行连接。
 
@@ -129,7 +129,7 @@ TLS 握手的主要目的是建立安全连接，在这个过程中，需要完�
 
 TLS 握手过程如下：
 
-![TLS 握手](<../../.gitbook/assets/image (7).png>)
+![TLS 握手](<../../.gitbook/assets/image (7) (1).png>)
 
 具体流程：
 
