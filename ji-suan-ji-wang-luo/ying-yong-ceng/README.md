@@ -1,5 +1,17 @@
+---
+description: 为操作系统或网络应用程序提供访问网络服务的接口。
+---
+
 # 应用层
 
-{% embed url="https://www.jianshu.com/p/254a9ee23a08" %}
+数据传输基本单位为报文；
 
-{% embed url="https://juejin.cn/post/7061588533214969892" %}
+包含的主要协议：
+
+* FTP（文件传送协议）
+* Telnet（远程登录协议）
+* DNS（域名解析协议）
+* SMTP（邮件传送协议）
+* POP3（邮局协议）
+* HTTP（超文本传输协议）。
+
