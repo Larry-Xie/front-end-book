@@ -1,6 +1,9 @@
 # JavaScript
 
-[https://github.com/yygmind/blog](https://github.com/yygmind/blog)
+* [https://github.com/yygmind/blog](https://github.com/yygmind/blog)
+* [https://wangdoc.com/javascript/basic/index.html](https://wangdoc.com/javascript/basic/index.html)
+
+
 
 * 执行上下文 & 变量提升
 * 内存管理
