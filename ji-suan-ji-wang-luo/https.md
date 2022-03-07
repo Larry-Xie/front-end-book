@@ -133,7 +133,7 @@ TLS 握手的主要目的是建立安全连接，在这个过程中，需要完�
 
 TLS 握手过程如下：
 
-![TLS 握手](<../.gitbook/assets/image (7) (1) (1).png>)
+![TLS 握手](<../.gitbook/assets/image (7) (1) (1) (1).png>)
 
 具体流程：
 
