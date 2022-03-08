@@ -1,5 +1,5 @@
 ---
-description: 计算机网络模型
+description: 计算机网络协议模型
 ---
 
 # 协议层次

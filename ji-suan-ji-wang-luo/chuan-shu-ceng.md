@@ -2,7 +2,7 @@
 description: 传输层中的两个协议：UDP 和 TCP。
 ---
 
-# TCP & UDP
+# 传输层
 
 ## 一、UDP
 
@@ -260,6 +260,6 @@ TIME-WAIT 发生在第四次挥手，当客户端向服务端发送 ACK 确认�
 
 ### 8. TCP 如何确保它的可靠性
 
-详情见[上文](tcp-and-udp.md#tcp-ke-kao-xing)。
+详情见[上文](chuan-shu-ceng.md#tcp-ke-kao-xing)。
 
 总结为：数据分块；序列号和确认应答；校验和；流量控制；拥塞控制；ARQ协议；超时重传。

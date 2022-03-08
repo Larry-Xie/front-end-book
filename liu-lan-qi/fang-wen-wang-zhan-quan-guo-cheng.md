@@ -23,7 +23,7 @@ description: 在浏览器里输入一个网址到网页显示出来的完整过�
 
 ## TCP 连接
 
-浏览器通过 DNS 获取到 Web 服务器真正的 IP 地址后，便向 Web 服务器发起 TCP 连接请求，通过三次握手进行连接。详细的 TCP 连接过程参见[这里](../ji-suan-ji-wang-luo/tcp-and-udp.md)。
+浏览器通过 DNS 获取到 Web 服务器真正的 IP 地址后，便向 Web 服务器发起 TCP 连接请求，通过三次握手进行连接。详细的 TCP 连接过程参见[这里](../ji-suan-ji-wang-luo/chuan-shu-ceng.md)。
 
 大致的三次握手流程如下：
 
@@ -57,7 +57,7 @@ description: 在浏览器里输入一个网址到网页显示出来的完整过�
 
 ## 断开 TCP 连接
 
-客户端和服务器通过四次挥手终止 TCP 连接。详细内容参见[这里](../ji-suan-ji-wang-luo/tcp-and-udp.md)。
+客户端和服务器通过四次挥手终止 TCP 连接。详细内容参见[这里](../ji-suan-ji-wang-luo/chuan-shu-ceng.md)。
 
 ## 参考
 
