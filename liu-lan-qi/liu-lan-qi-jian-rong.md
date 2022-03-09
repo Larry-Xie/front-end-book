@@ -2,7 +2,6 @@
 
 ## 一、前言 <a href="#bbgeig" id="bbgeig"></a>
 
-\
 现在的市场上有很多种类的浏览器，不同种类的浏览器的内核也不尽相同，所以不同浏览器对代码的解析会存在差异，这就导致对页面渲染效果不统一的问题。
 
 常见的浏览器兼容性可分为三类：&#x20;
@@ -170,87 +169,125 @@ padding: 0;
 
 在 IE 中仅仅设置 margin: 0; 即可达到最终效果；而在Firefox中必须同时设置这三项才能达到最终效果。
 
+## 四、JavaScript 兼容
 
+### 1. innerText 和 innerHTML
 
+innerHTML是非标准属性（非w3c标准），但是所有的浏览器都支持。
 
+innerText 属性存在兼容性问题，早期的火狐浏览器不支持该属性，使用textContent替代。
 
-\
-
-
-## 四JavaScript 兼容
-
-\
-
-
-\
-
-
-* 事件兼容的问题，我们通常需要会封装一个适配器的方法，过滤事件句柄绑定、移除、冒泡阻止以及默认事件行为处理
-
-\
-
-
-```
- var  helper = {}
-
- //绑定事件
- helper.on = function(target, type, handler) {
- 	if(target.addEventListener) {
- 		target.addEventListener(type, handler, false);
- 	} else {
- 		target.attachEvent("on" + type,
- 			function(event) {
- 				return handler.call(target, event);
- 		    }, false);
- 	}
- };
-
- //取消事件监听
- helper.remove = function(target, type, handler) {
- 	if(target.removeEventListener) {
- 		target.removeEventListener(type, handler);
- 	} else {
- 		target.detachEvent("on" + type,
- 	    function(event) {
- 			return handler.call(target, event);
- 		}, true);
-     }
- };
+```javascript
+if (navigator.appName.indexOf("Explorer") > -1) {
+   document.getElementById("element").innerText = "my text";
+} else {
+   document.getElementById("element").textContent = "my text";
+}
 ```
 
-\
+### 2. 窗口大小
 
+获取视窗大小也需要考虑兼容性。
 
-\
+```javascript
+// 浏览器窗口可视区域大小（不包括工具栏和滚动条等边线）
+// 1600 * 525
+var client_w = document.documentElement.clientWidth || document.body.clientWidth;
+var client_h = document.documentElement.clientHeight || document.body.clientHeight;
 
+// 网页内容实际宽高（包括工具栏和滚动条等边线）
+// 1600 * 8
+var scroll_w = document.documentElement.scrollWidth || document.body.scrollWidth;
+var scroll_h = document.documentElement.scrollHeight || document.body.scrollHeight;
 
-* new Date()构造函数使用，'2018-07-05'是无法被各个浏览器中，使用new Date(str)来正确生成日期对象的。 正确的用法是'2018/07/05'.
+// 网页内容实际宽高 (不包括工具栏和滚动条等边线）
+// 1600 * 8
+var offset_w = document.documentElement.offsetWidth || document.body.offsetWidth;
+var offset_h = document.documentElement.offsetHeight || document.body.offsetHeight;
 
-\
-
-
-* 获取 scrollTop 通过 document.documentElement.scrollTop 兼容非chrome浏览器
-
-\
-
-
+// 滚动的高度
+var scroll_Top = document.documentElement.scrollTop|| document.body.scrollTop;
 ```
-var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+
+### 3. 事件处理
+
+事件兼容的问题，我们通常需要会封装一个适配器的方法，过滤事件句柄绑定、移除、冒泡阻止以及默认事件行为处理。
+
+```javascript
+var eventshiv = {
+    // event兼容
+    getEvent: function(event) {
+        return event ? event : window.event;
+    },
+
+    // type兼容
+    getType: function(event) {
+        return event.type;
+    },
+
+    // target兼容
+    getTarget: function(event) {
+        return event.target ? event.target : event.srcelem;
+    },
+
+    // 添加事件句柄
+    addHandler: function(elem, type, listener) {
+        if (elem.addEventListener) {
+            elem.addEventListener(type, listener, false);
+        } else if (elem.attachEvent) {
+            elem.attachEvent('on' + type, listener);
+        } else {
+            // 在这里由于.与'on'字符串不能链接，只能用 []
+            elem['on' + type] = listener;
+        }
+    },
+
+    // 移除事件句柄
+    removeHandler: function(elem, type, listener) {
+        if (elem.removeEventListener) {
+            elem.removeEventListener(type, listener, false);
+        } else if (elem.detachEvent) {
+            elem.detachEvent('on' + type, listener);
+        } else {
+            elem['on' + type] = null;
+        }
+    },
+
+    // 添加事件代理
+    addAgent: function (elem, type, agent, listener) {
+        elem.addEventListener(type, function (e) {
+            if (e.target.matches(agent)) {
+                listener.call(e.target, e); // this 指向 e.target
+            }
+        });
+    },
+
+    // 取消默认行为
+    preventDefault: function(event) {
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+
+    // 阻止事件冒泡
+    stopPropagation: function(event) {
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+};
 ```
 
-\
+> * IE 9 以下获取事件对象使用 window.event
+> * IE 9 以下绑定事件监听使用 attchEvent()，相应地移除事件监听用 detachEvent()
+> * IE 9 以下取消事件默认行为用 event.returnValue = false
+> * IE 9 以下阻止事件冒泡用 event.cancelBubble = true
 
-
-## 4. 浏览器 hack
-
-\
-
-
-\
-\
-
-
-## 5. 参考
+## 五、参考
 
 * [https://juejin.cn/post/6844903633708908557](https://juejin.cn/post/6844903633708908557)
 * [https://juejin.cn/post/6971312765356998687](https://juejin.cn/post/6971312765356998687#heading-8)
