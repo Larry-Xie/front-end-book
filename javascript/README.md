@@ -19,3 +19,4 @@
 * 深拷贝 & 浅拷贝
 * 模块化
 * 设计模式: [https://wiki.jikexueyuan.com/project/javascript-design-patterns/](https://wiki.jikexueyuan.com/project/javascript-design-patterns/)
+* 常用函数封装：[https://www.jianshu.com/p/cc01443d1359](https://www.jianshu.com/p/cc01443d1359)
