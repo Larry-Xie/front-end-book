@@ -19,7 +19,7 @@
   * [浏览器缓存](liu-lan-qi/liu-lan-qi-huan-cun.md)
   * [浏览器存储](liu-lan-qi/liu-lan-qi-cun-chu.md)
   * [浏览器工作原理](liu-lan-qi/liu-lan-qi-gong-zuo-yuan-li.md)
-  * [跨域](liu-lan-qi/kua-yu.md)
+  * [浏览器同源策略](liu-lan-qi/liu-lan-qi-tong-yuan-ce-lve.md)
   * [事件机制](liu-lan-qi/shi-jian-ji-zhi.md)
   * [访问网站全过程](liu-lan-qi/fang-wen-wang-zhan-quan-guo-cheng.md)
 * [JavaScript](javascript/README.md)
