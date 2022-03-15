@@ -145,7 +145,7 @@ window.onmessage = function(e) {
 };
 ```
 
-### 五、DOM 跨域
+## 五、DOM 跨域
 
 如果两个网页不同源，就无法拿到对方的DOM。典型的例子是`iframe`窗口和`window.open`方法打开的窗口，它们与父窗口无法通信。
 
@@ -385,7 +385,17 @@ Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=
 Sec-WebSocket-Protocol: chat
 ```
 
-### 3. CORS
+### 3. 代理服务器
+
+![反向代理](<../.gitbook/assets/image (10).png>)
+
+增加代理服务器，和 H5 资源服务器放在同一个域名下，接口请求全走代理服务器，这样就变成了同源访问，不存在跨域访问，因此就不会存在跨域的问题。
+
+该方式中，所有发往目标服务器的数据，都会经过代理服务器，适用于同一个公司内部不同域名之间相互访问的情况。
+
+使用此方式还需注意一点，应关注代理服务器的性能，代理服务器的性能应与后端的目标服务器的性能相匹配，否则代理服务器会成为整个系统的性能瓶颈。
+
+### 4. CORS
 
 CORS 是跨源资源分享（Cross-Origin Resource Sharing）的缩写。它是 W3C 标准，是跨源 AJAX 请求的根本解决方法。相比 JSONP 只能发`GET`请求，CORS 允许任何类型的请求。
 
@@ -395,7 +405,9 @@ CORS 是跨源资源分享（Cross-Origin Resource Sharing）的缩写。它是 
 
 因此，实现CORS通信的**关键是服务器**。只要服务器实现了CORS接口，就可以跨域通信。
 
-详情参阅阮一峰：[http://www.ruanyifeng.com/blog/2016/04/cors.html](http://www.ruanyifeng.com/blog/2016/04/cors.html)
+CORS 要分成简单请求和非简单请求来处理。
+
+> 详情参阅阮一峰：[http://www.ruanyifeng.com/blog/2016/04/cors.html](http://www.ruanyifeng.com/blog/2016/04/cors.html)
 
 > CORS 与 JSONP 的使用目的相同，但是比JSONP更强大。JSONP 只支持`GET`请求，CORS 支持所有类型的HTTP请求。JSONP 的优势在于支持老式浏览器，以及可以向不支持 CORS 的网站请求数据。
 
