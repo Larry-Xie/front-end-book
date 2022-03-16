@@ -16,7 +16,7 @@ DNS（Domain Name System）是域名系统的英文缩写，是一种组织成�
 
 ## 二、DNS 服务器
 
-![DNS 服务器](<../.gitbook/assets/image (7) (1) (1) (1).png>)
+![DNS 服务器](<../.gitbook/assets/image (7) (1) (1) (1) (1).png>)
 
 
 

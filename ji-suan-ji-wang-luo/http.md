@@ -6,7 +6,7 @@ description: 超文本传输协议（Hyper Text Transfer Protocol，HTTP）
 
 > 可以参看这篇[文章](https://juejin.cn/post/6844904100035821575)来具体的了解HTTP。
 
-![HTTP 发展](<../.gitbook/assets/image (2).png>)
+![HTTP 发展](<../.gitbook/assets/image (2) (1).png>)
 
 ## 一、HTTP 头部信息
 
