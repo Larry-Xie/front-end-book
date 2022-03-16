@@ -249,13 +249,31 @@ Cache-Control: max-age=600, must-revalidate
 
 ## 六、考点
 
+### 1. 三种刷新操作对 http 缓存的影响
 
+通常浏览器的刷新操作有如下三种：
 
-\
+* 正常操作：地址栏输入 url，跳转链接，前进后退等；
+* 手动刷新：f5，点击刷新按钮，右键菜单刷新；
+* 强制刷新：ctrl + f5，shift+command+r；
 
+对应的对缓存的影响如下：
+
+* 正常操作：强制缓存有效，协商缓存有效；
+* 手动刷新：强制缓存失效，协商缓存有效；
+* 强制刷新：强制缓存失效，协商缓存失效；
+
+### 2. Cache-Control 字段各个值的含义
+
+![Cache-Control](<../.gitbook/assets/image (11).png>)
+
+### 3. 缓存处理顺序 
+
+![浏览器缓存处理流程](<../.gitbook/assets/image (10).png>)
 
 ## 七、参考
 
 * [https://github.com/easonyq/easonyq.github.io/blob/master/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/others/cache.md](https://github.com/easonyq/easonyq.github.io/blob/master/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/others/cache.md)
+* [https://juejin.cn/post/6992843117963509791](https://juejin.cn/post/6992843117963509791)
 
 \
