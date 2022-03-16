@@ -14,8 +14,7 @@
 
 * 按缓存位置分类 (memory cache, disk cache, Service Worker 等)
 * 按失效策略分类 (`Cache-Control`, `ETag` 等)
-* 帮助理解原理的一些案例
-* 缓存的应用模式
+* 缓存的应用场景
 
 ## 二、按缓存位置分类
 
@@ -84,7 +83,7 @@ Service Worker 能够操作的缓存是有别于浏览器内部的 memory cache 
 2. 根据 HTTP 头部的相关字段(`Cache-control`, `Pragma` 等)决定是否存入 disk cache
 3. memory cache 保存一份资源 **的引用**，以备下次使用。
 
-## 三、按失效策略分类
+## 三、按缓存策略分类
 
 memory cache 是浏览器为了加快读取缓存速度而进行的自身优化行为，不受开发者控制，也不受 HTTP 协议头的约束，算是一个黑盒。Service Worker 是由开发者编写的额外的脚本，且缓存位置独立，出现也较晚，使用还不算太广泛。所以我们平时最为熟悉的其实是 disk cache，也叫 HTTP cache。平时所说的强制缓存，对比缓存，以及 `Cache-Control` 等，也都归于此类。
 
@@ -199,15 +198,12 @@ Last-Modified: Mon, 10 Nov 2018 09:10:11 GMT
 5. 发送网络请求，等待网络响应
 6. 把响应内容存入 disk cache (如果 HTTP 头信息配置可以存的话)
 7. 把响应内容 **的引用** 存入 memory cache (无视 HTTP 头信息的配置)
-8. 把响应内容存入 Service Worker 的 Cache Storage (如果 Service Worker 的脚本调用了 `cache.put()`)
-
-\
+8. 把响应内容存入 Service Worker 的 Cache Storage (如果 Service Worker 的脚本调用了 `cache.put()`)\
 
 
-\
+![浏览器缓存处理流程](<../.gitbook/assets/image (14).png>)
 
-
-## 五缓存的应用
+## 五、缓存的应用
 
 了解了缓存的原理，我们可能更加关心如何在实际项目中使用它们，才能更好的让用户缩短加载时间，节约流量等。这里有几个常用的模式，供大家参考
 
@@ -237,46 +233,28 @@ Cache-Control: no-cache
 
 也正如上文中提到协商缓存那样，这种模式下，节省的并不是请求数，而是请求体的大小。所以它的优化效果不如模式 1 来的显著。
 
-### 6.3 模式 3：非常危险的模式 1 和 2 的结合 （反例）
-
-\
-
+### 3. 非常危险的模式 1 和 2 的结合 （反例）
 
 ```
 Cache-Control: max-age=600, must-revalidate
 ```
 
-\
-
-
 不知道是否有开发者从模式 1 和 2 获得一些启发：模式 2 中，设置了 `no-cache`，相当于 `max-age=0, must-revalidate`。我的应用时效性没有那么强，但又不想做过于长久的强制缓存，我能不能配置例如 `max-age=600, must-revalidate` 这样折中的设置呢？
-
-\
-
 
 表面上看这很美好：资源可以缓存 10 分钟，10 分钟内读取缓存，10 分钟后和服务器进行一次验证，集两种模式之大成，但实际线上暗存风险。因为上面提过，浏览器的缓存有自动清理机制，开发者并不能控制。
 
-\
-
-
 举个例子：当我们有 3 种资源： `index.html`, `index.js`, `index.css`。我们对这 3 者进行上述配置之后，假设在某次访问时，`index.js` 已经被缓存清理而不存在，但 `index.html`, `index.css` 仍然存在于缓存中。这时候浏览器会向服务器请求新的 `index.js`，然后配上老的 `index.html`, `index.css` 展现给用户。这其中的风险显而易见：不同版本的资源组合在一起，报错是极有可能的结局。
-
-\
-
 
 除了自动清理引发问题，不同资源的请求时间不同也能导致问题。例如 A 页面请求的是 `A.js` 和 `all.css`，而 B 页面是 `B.js` 和 `all.css`。如果我们以 A -> B 的顺序访问页面，势必导致 `all.css` 的缓存时间早于 `B.js`。那么以后访问 B 页面就同样存在资源版本失配的隐患。
 
+## 六、考点
 
 
-\
-
-
-##
 
 \
 
 
-## 8. 参考
+## 七、参考
 
 * [https://github.com/easonyq/easonyq.github.io/blob/master/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/others/cache.md](https://github.com/easonyq/easonyq.github.io/blob/master/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/others/cache.md)
 
