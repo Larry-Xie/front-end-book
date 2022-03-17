@@ -387,7 +387,7 @@ Sec-WebSocket-Protocol: chat
 
 ### 3. 代理服务器
 
-![反向代理](<../.gitbook/assets/image (10) (1).png>)
+![反向代理](<../.gitbook/assets/image (10) (1) (1).png>)
 
 增加代理服务器，和 H5 资源服务器放在同一个域名下，接口请求全走代理服务器，这样就变成了同源访问，不存在跨域访问，因此就不会存在跨域的问题。
 

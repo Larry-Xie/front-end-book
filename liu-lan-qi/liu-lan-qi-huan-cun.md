@@ -65,13 +65,65 @@ disk cache 会严格根据 HTTP 头信息中的各类字段来判定哪些资源
 
 ### 3. Service Worker
 
-上述的缓存策略以及缓存/读取/失效的动作都是由浏览器内部判断和进行的，我们只能设置响应头的某些字段来告诉浏览器，而不能自己操作。举个生活中去银行存/取钱的例子来说，你只能告诉银行职员，我要存/取多少钱，然后把由他们会经过一系列的记录和手续之后，把钱放到金库中去，或者从金库中取出钱来交给你。
+上述的缓存策略以及缓存/读取/失效的动作都是由浏览器内部判断和进行的，我们只能设置响应头的某些字段来告诉浏览器，而不能自己操作。但 Service Worker 的出现，给予了我们另外一种更加灵活，更加直接的操作方式。可以配置缓存哪些文件，定义路由匹配规则等。
 
-但 Service Worker 的出现，给予了我们另外一种更加灵活，更加直接的操作方式。依然以存/取钱为例，我们现在可以绕开银行职员，自己走到金库前(当然是有别于上述金库的一个单独的小金库)，自己把钱放进去或者取出来。因此我们可以选择放哪些钱(缓存哪些文件)，什么情况把钱取出来(路由匹配规则)，取哪些钱出来(缓存匹配并返回)。当然现实中银行没有给我们开放这样的服务。
+Service Worker 是运行在浏览器背后的**独立线程**，一般可以用来实现缓存功能。使用 Service Worker 的话，传输协议必须为 **HTTPS**。因为 Service Worker 中涉及到请求拦截，所以必须使用 HTTPS 协议来保障安全。
 
-Service Worker 能够操作的缓存是有别于浏览器内部的 memory cache 或者 disk cache 的。我们可以从 Chrome 的 F12 中，Application -> Cache Storage 找到这个单独的“小金库”。除了位置不同之外，这个缓存是**永久性**的，即关闭 TAB 或者浏览器，下次打开依然还在(而 memory cache 不是)。有两种情况会导致这个缓存中的**资源被清除：手动调用 API `cache.delete(resource)` 或者容量超过限制**，被浏览器全部清空。
+Service Worker 实现缓存功能一般分为三个步骤：首先需要先注册 Service Worker，然后监听到 `install` 事件以后就可以缓存需要的文件，那么在下次用户访问的时候就可以通过拦截请求的方式查询是否存在缓存，存在缓存的话就可以直接读取缓存文件，否则就去请求数据。
 
-如果 Service Worker 没能命中缓存，一般情况会使用 `fetch()` 方法继续获取资源。这时候，浏览器就去 memory cache 或者 disk cache 进行下一次找缓存的工作了。
+以下是这个步骤的实现：
+
+```javascript
+// index.js
+if (navigator.serviceWorker) {
+  navigator.serviceWorker
+    .register('sw.js')
+    .then(function(registration) {
+      console.log('service worker 注册成功')
+    })
+    .catch(function(err) {
+      console.log('servcie worker 注册失败')
+    })
+}
+// sw.js
+// 监听 `install` 事件，回调中缓存所需文件
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open('my-cache').then(function(cache) {
+      return cache.addAll(['./index.html', './index.js'])
+    })
+  )
+})
+
+// 拦截所有请求事件
+// 如果缓存中已经有请求的数据就直接用缓存，否则去请求数据
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    caches.match(e.request).then(function(response) {
+      if (response) {
+        return response
+      }
+      console.log('fetch source')
+    })
+  )
+})
+```
+
+打开页面，可以在开发者工具中的 `Application` 看到 Service Worker 已经启动了!
+
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dacd9c7895d942578c6326dfc3367e22\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
+
+在 Cache 中也可以发现我们所需的文件已被缓存
+
+![](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/3/28/1626b20dfc4fcd26\~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp)
+
+当我们重新刷新页面可以发现我们缓存的数据是从 Service Worker 中读取的
+
+![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9d67e7882fef4ab0a22542757b20763e\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
+
+
+
+> 如果 Service Worker 没能命中缓存，一般情况会使用 `fetch()` 方法继续获取资源。这时候，浏览器就去 memory cache 或者 disk cache 进行下一次找缓存的工作了。
 
 > 经过 Service Worker 的 `fetch()` 方法获取的资源，即便它并没有命中 Service Worker 缓存，甚至实际走了网络请求，也会标注为 `from ServiceWorker`。
 
@@ -269,7 +321,7 @@ Cache-Control: max-age=600, must-revalidate
 
 ### 3. 缓存处理顺序 
 
-![浏览器缓存处理流程](<../.gitbook/assets/image (10).png>)
+![浏览器缓存处理流程](<../.gitbook/assets/image (10) (1).png>)
 
 ## 七、参考
 
