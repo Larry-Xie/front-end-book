@@ -317,7 +317,7 @@ Cache-Control: max-age=600, must-revalidate
 
 ### 2. Cache-Control 字段各个值的含义
 
-![Cache-Control](<../.gitbook/assets/image (11).png>)
+![Cache-Control](<../.gitbook/assets/image (11) (1).png>)
 
 ### 3. 缓存处理顺序 
 
