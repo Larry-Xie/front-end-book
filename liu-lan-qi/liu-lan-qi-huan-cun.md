@@ -193,7 +193,7 @@ Cache-control: max-age=2592000
 
 ### 2. 对比缓存 (协商缓存)
 
-![协商缓存](<../.gitbook/assets/image (7).png>)
+![协商缓存](<../.gitbook/assets/image (7) (1).png>)
 
 当强制缓存失效(超过规定时间)时，就需要使用对比缓存，由服务器决定缓存内容是否失效。
 
@@ -225,7 +225,7 @@ Last-Modified: Mon, 10 Nov 2018 09:10:11 GMT
 * 如果资源更新的速度是秒以下单位，那么该缓存是不能被使用的，因为它的时间单位最低是秒。
 * 如果文件是通过服务器动态生成的，那么该方法的更新时间永远是生成的时间，尽管文件可能没有变化，所以起不到缓存的作用。
 
-![基于 Last-Modified 的协商缓存](<../.gitbook/assets/image (8).png>)
+![基于 Last-Modified 的协商缓存](<../.gitbook/assets/image (8) (1).png>)
 
 #### Etag & If-None-Match
 

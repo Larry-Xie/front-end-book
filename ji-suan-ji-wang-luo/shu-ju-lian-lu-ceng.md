@@ -56,7 +56,7 @@
 
 跟以太网相关的拓扑结构有星型和总线型。
 
-![星型拓扑结构](<../.gitbook/assets/image (8) (1).png>)
+![星型拓扑结构](<../.gitbook/assets/image (8) (1) (1).png>)
 
 
 

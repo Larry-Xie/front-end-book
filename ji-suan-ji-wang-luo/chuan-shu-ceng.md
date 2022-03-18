@@ -26,7 +26,7 @@ UDP协议的要点如下：
 
 因为 UDP 是基于无连接的协议，所以也就没有 TCP 那么复杂。因此 UDP 的头部开销小，只有八字节，相比 TCP 的至少二十字节要少得多，在传输数据报文时是很高效的。
 
-![UDP Header](<../.gitbook/assets/image (5) (1) (1) (1).png>)
+![UDP Header](<../.gitbook/assets/image (5) (1) (1) (1) (1).png>)
 
 UDP 头部包含了以下几个数据：
 
@@ -113,7 +113,7 @@ TCP 首部如上图所示，比 UDP 首部要复杂很多。TCP 段的首部长�
 
 ### 3. TCP 四次挥手
 
-![TCP 四次挥手](<../.gitbook/assets/image (8) (1) (1).png>)
+![TCP 四次挥手](<../.gitbook/assets/image (8) (1) (1) (1).png>)
 
 四次挥手即 TCP 连接的释放，这里假设客户端主动释放连接。在挥手之前主动释放连接的客户端结束 ESTABLISHED 阶段，随后开始四次挥手：
 

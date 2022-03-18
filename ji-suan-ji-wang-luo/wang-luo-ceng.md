@@ -10,7 +10,7 @@
 
 与 IP 协议配套使用实现其功能的还有地址解析协议 ARP、逆地址解析协议 RARP、因特网报文协议ICMP、因特网组管理协议 IGMP。
 
-![网络层](<../.gitbook/assets/image (7) (1).png>)
+![网络层](<../.gitbook/assets/image (7) (1) (1).png>)
 
 ## 二、IP 协议
 
@@ -27,7 +27,7 @@ IP 数据包在传输过程中可能会经过不同的网络，在不同的网�
 \
 
 
-![IP 协议中的数据包转发流程](<../.gitbook/assets/image (5).png>)
+![IP 协议中的数据包转发流程](<../.gitbook/assets/image (5) (1).png>)
 
 ## 三、IP 地址
 

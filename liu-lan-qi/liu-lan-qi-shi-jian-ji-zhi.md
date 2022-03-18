@@ -43,7 +43,7 @@ for (var key in body) {
 
 ## 三、事件注册
 
-我们一般使用 **EventTarget.addEventListener()** 来注册事件，当该对象触发指定的事件时，指定的回调函数就会被执行。 事件目标可以是一个文档上的元素 `Element`,`Document`和`Window`或者任何其他支持事件的对象 (比如 `XMLHttpRequest`)`。`
+我们一般使用 [**EventTarget.addEventListener()**](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener) **** 来注册事件，当该对象触发指定的事件时，指定的回调函数就会被执行。 事件目标可以是一个文档上的元素 `Element`,`Document`和`Window`或者任何其他支持事件的对象 (比如 `XMLHttpRequest`)`。`
 
 `addEventListener()`的工作原理是将实现`EventListener`的函数或对象添加到调用它的`EventTarget`上的指定事件类型的事件侦听器列表中。语法如下：
 
@@ -53,15 +53,15 @@ target.addEventListener(type, listener, useCapture);
 target.addEventListener(type, listener, useCapture, wantsUntrusted );  // Gecko/Mozilla only
 ```
 
-一般我们一般一般使用 `addEventListener` 来注册事件，它接受三个参数：
+一般我们使用三个参数：
 
-* 处理的事件名称，如点击事件 `click`；
-* 事件处理程序，即要绑定的函数体；
-* 指定是在事件冒泡还是事件捕获阶段处理参数，可以是布尔值，也可以是对象
+* **type：**处理的事件名称，如点击事件 `click`；
+* **listener：**事件处理程序，即要绑定的函数体；
+* **useCapture：**指定是在事件冒泡还是事件捕获阶段处理参数；
   * `true` 则作为捕获事件处理；
   * `false` 则作为冒泡事件处理（默认）。
 
-第三个参数是对象时，可以使用以下几个属性：
+如果第三个参数用 options 时，可以使用以下几个属性：
 
 * `capture`：布尔值，和第三个参数作为布尔值时作用一样
 * `once`：布尔值，值为 `true` 表示该回调只会调用一次，调用后会移除监听
@@ -71,25 +71,6 @@ target.addEventListener(type, listener, useCapture, wantsUntrusted );  // Gecko/
 
 * `stopPropagation` 是用来阻止事件冒泡的，其实该函数也可以阻止捕获事件。
 * `stopImmediatePropagation` 也能实现阻止事件，但是**还能阻止该事件目标执行别的注册事件**。
-
-```javascript
-node.addEventListener(
-  'click',
-  event => {
-    event.stopImmediatePropagation()
-    console.log('冒泡')
-  },
-  false
-)
-// 点击 node 只会执行上面的函数，该函数不会执行
-node.addEventListener(
-  'click',
-  event => {
-    console.log('捕获 ')
-  },
-  true
-)
-```
 
 ## 四、事件代理
 
@@ -104,12 +85,11 @@ node.addEventListener(
   <li>公告</li>
   <li>简介</li>
 </ul>
-复制代码
 ```
 
 事件代理：
 
-```js
+```javascript
 let proxy = document.querySelector('#proxy')
 proxy.addEventListener('click', (event) => {
   let target = event.target; // 当前点击的元素
@@ -117,7 +97,6 @@ proxy.addEventListener('click', (event) => {
     console.log('click:' + target.innerHTML);
   }
 })
-复制代码
 ```
 
 这种方式相较于直接给目标注册事件来说，有以下优点：
@@ -125,29 +104,6 @@ proxy.addEventListener('click', (event) => {
 * 可以减少内存占用，减少事件注册
 * 不需要给子节点注销事件
 
+## 参考
 
-
-
-
-如果一个节点中的子节点是动态生成的，那么子节点需要注册事件的话**应该注册在父节点上**
-
-```html
-<ul id="ul">
-	<li>1</li>
-    <li>2</li>
-	<li>3</li>
-	<li>4</li>
-	<li>5</li>
-</ul>
-<script>
-	let ul = document.querySelector('#ul')
-	ul.addEventListener('click', (event) => {
-		console.log(event.target);
-	})
-</script>
-```
-
-事件代理的方式相较于直接给目标注册事件来说，有以下优点：
-
-* 节省内存
-* 不需要给子节点注销事件
+* [https://juejin.cn/post/6973680109182009374](https://juejin.cn/post/6973680109182009374)
