@@ -116,7 +116,7 @@ HTTPS 如果使用对称加密的弊端在于私钥还是需要通过网络从�
 
 HTTPS 相比 HTTP 最大的不同就是多了一层 SSL (Secure Sockets Layer 安全套接层)或 TLS (Transport Layer Security 安全传输层协议)。有了这个安全层，就确保了互联网上通信双方的通信安全。
 
-![HTTP vs HTTPS](<../.gitbook/assets/image (6) (1) (1) (1) (1).png>)
+![HTTP vs HTTPS](<../.gitbook/assets/image (6) (1) (1) (1) (1) (1).png>)
 
 SSL 和 TLS 协议通过为通信双方提供识别和认证通道来保证通信的机密性和数据完整性。TLS 协议是从SSL 3.0协议演变而来的，现在 **SSL 已经被 TLS 取代**，所以现在的 HTTPS 可以看作是基于 TLS 的。类似于 TCP 建立连接时的三次握手，HTTPS 的启动过程也需要进行 TLS 握手来进行连接。
 
