@@ -29,7 +29,7 @@
   * [HTML 语义化](html/html-yu-yi-hua.md)
   * [BOM](html/bom.md)
   * [ARIA](html/aria.md)
-  * [HTML 5新特性](html/html-5-xin-te-xing.md)
+  * [HTML 5 新特性](html/html-5-xin-te-xing.md)
 * [CSS](css.md)
 * [JavaScript](javascript/README.md)
   * [ECMAScript](javascript/ecmascript.md)
