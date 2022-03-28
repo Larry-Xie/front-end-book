@@ -1,9 +1,3 @@
 # HTML
 
-* 语义化
-* MIME
-* ARIA
-* HTML 5 新特性
-* 元数据
-* SVG & Canvas
-* defer & async preload
+比较全面的 HTML 面试题: [https://juejin.cn/post/6940881373531996191](https://juejin.cn/post/6940881373531996191)
