@@ -31,7 +31,7 @@
   * [HTML 元数据](html/html-yuan-shu-ju.md)
   * [HTML 5 新特性](html/html-5-xin-te-xing.md)
   * [SVG & Canvas](html/svg-and-canvas.md)
-  * [预加载和异步加载](html/yu-jia-zai-he-yi-bu-jia-zai.md)
+  * [预加载](html/yu-jia-zai.md)
   * [异步加载](html/yi-bu-jia-zai.md)
   * [Web Worker](html/web-worker.md)
   * [Web Socket](html/web-socket.md)
