@@ -34,7 +34,7 @@
   * [预加载](html/yu-jia-zai.md)
   * [异步加载](html/yi-bu-jia-zai.md)
   * [Web Worker](html/web-worker.md)
-  * [Web Socket](html/web-socket.md)
+  * [Web Sockets](html/web-sockets.md)
   * [Web Component](html/web-component.md)
 * [CSS](css.md)
 * [JavaScript](javascript/README.md)
