@@ -1,5 +1,23 @@
 # 浏览器
 
-* DOM 和 JS、CSS 不得不说的故事： [https://juejin.cn/post/6976054641746247688](https://juejin.cn/post/6976054641746247688)
-* [https://juejin.cn/column/6970335987721306125](https://juejin.cn/column/6970335987721306125)
-* [https://juejin.cn/post/6844904040346681358](https://juejin.cn/post/6844904040346681358)
+## 一、引言
+
+浏览器能够考察的主要内容：
+
+* 浏览器内核
+* 浏览器兼容性问题以及处理方案
+* 浏览器缓存方式
+* 浏览器存储
+* 浏览器的工作原理
+* 浏览器的同源策略限制以及解决方案
+* 访问网页的全过程
+
+其中的内容有的可以很深入，尤其是访问网页过程，考察的范围最全面，每一环节涉及的内容都可以细说很多，需要精心准备。
+
+![浏览器高频面试题](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/23df95226fe54f26acd8f0d3c62b5d85\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
+
+## 二、好文推荐
+
+* [高频前端面试题汇总之浏览器原理篇](https://juejin.cn/post/6916157109906341902/)
+* [浏览器知识点整理](https://juejin.cn/column/6970335987721306125)
+* [从 8 道面试题看浏览器渲染过程与性能优化](https://juejin.cn/post/6844904040346681358)

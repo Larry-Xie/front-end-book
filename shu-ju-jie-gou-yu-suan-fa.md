@@ -19,5 +19,8 @@
 
 
 
-![](<../.gitbook/assets/image (13) (1).png>)
+* [宫水三叶的刷题日记](https://github.com/SharingSource/LogicStack-LeetCode/tree/main/PDF)
+* [完全背包问题](https://leetcode-cn.com/problems/coin-change/solution/dai-ma-sui-xiang-lu-dai-ni-xue-tou-wan-q-80r7/)
+
+![](<.gitbook/assets/image (13) (1).png>)
 

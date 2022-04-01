@@ -6,8 +6,7 @@
 
 谷歌公司由于掌握了 Chrome 浏览器，一直在推动浏览器的原生组件，即 Web Components API。相比第三方框架，原生组件简单直接，符合直觉，不用加载任何外部模块，代码量小。目前，它还在不断发展，但已经可用于生产环境。
 
-![
-](https://cdn.nlark.com/yuque/0/2022/png/122345/1648735878206-9e97fcb1-ed23-4fb2-9804-8e0781a1824f.png)
+![Web Components](https://www.wangbase.com/blogimg/asset/201908/bg2019080604.jpg)
 
 ## 二、概念 <a href="#umssv" id="umssv"></a>
 
@@ -140,7 +139,7 @@ HTML 和 DOM 标准定义了四种新的标准来帮助定义 Web Component。�
 
 下图是一个用户卡片。
 
-![](https://cdn.nlark.com/yuque/0/2022/png/122345/1648737180241-5522a2f5-4bbe-40e8-add6-9c5e4aaaefdc.png)
+![User Card](https://www.wangbase.com/blogimg/asset/201908/bg2019080405.jpg)
 
 本文演示如何把这个卡片，写成 Web Components 组件，这里是最后的[完整代码](https://jsbin.com/yobopor/1/edit?html,js,output)。
 

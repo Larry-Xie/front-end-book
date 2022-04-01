@@ -1,5 +1,0 @@
-# CSS
-
-* Flex
-* Grid
-* BFS
