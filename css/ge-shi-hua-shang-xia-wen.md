@@ -32,19 +32,13 @@ Box 是 CSS 布局的对象和基本单位， 直观点来说，就是一个页�
 
 ### **3. 创建 BFC**
 
-创建 BFC 只需要设置特定的样式即能触发  BFC:
+只需要设置特定的样式即能触发  BFC:
 
-* html根元素;
+* html 根元素;
 * float 的值不为 none;
 * overflow 的值不为visible；
-* display 的值为 table-cell、table-caption , inline-block ,flex, inline-flex,grid,inline-grid中的任何一个；
+* display 的值为 table-cell, table-caption, inline-block, flex, inline-flex, grid, inline-grid 中的任何一个；
 * position 的值不为 relative 和 static。
-
-\
-作者：\_烦啦\
-链接：https://juejin.cn/post/6941355126191816711\
-来源：稀土掘金\
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 ### **4. BFC 应用场景**
 
@@ -108,18 +102,19 @@ BFC 渲染原理之一：同一个 BFC 下的垂直 margin 会发生合并。所
 .contain-b {
     overflow: hidden;
 }
-复制代码
 ```
 
 针对以上 3 个 示例 ，可以结合这个 [BFC 应用示例](https://link.juejin.cn/?target=https%3A%2F%2Fcodepen.io%2Fbulandent%2Fpen%2FeYBVpEm) 配合观看更佳。
 
 ## 三、**IFC**
 
-IFC 的形成条件非常简单，块级元素中仅包含内联级别元素，需要注意的是当IFC中有块级元素插入时，会产生两个匿名块将父元素分割开来，产生两个 IFC。
+### 1. 概念
+
+IFC 的形成条件非常简单，块级元素中仅包含内联级别元素，需要注意的是当 IFC 中有块级元素插入时，会产生两个匿名块将父元素分割开来，产生两个 IFC。
 
 ![IFC](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5cee1281ae5f44a69abc94fb9fa760fd\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
 
-**IFC 渲染规则**
+### **2 IFC 渲染规则**
 
 * 子元素在水平方向上一个接一个排列，在垂直方向上将以容器顶部开始向下排列；
 * 节点无法声明宽高，其中 margin 和 padding 在水平方向有效在垂直方向无效；
@@ -130,14 +125,15 @@ IFC 的形成条件非常简单，块级元素中仅包含内联级别元素，�
 * 当内联级盒子的总宽度少于包含它们的 line box 时，其水平渲染规则由 text-align 属性值来决定；
 * 当一个内联盒子超过父元素的宽度时，它会被分割成多盒子，这些盒子分布在多个 line box 中。如果子元素未设置强制换行的情况下，inline box 将不可被分割，将会溢出父元素。
 
-针对如上的 IFC 渲染规则，你是不是可以分析下下面这段代码的 IFC 环境是怎么样的呢？
+### 3. IFC 实例
+
+举个例子，有如下 HTML:&#x20;
 
 ```html
 <p>It can get <strong>very complicated</storng> once you start looking into it.</p>
-复制代码
 ```
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d357e140d61c4635a13771067758862b\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
+![IFC 实例](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d357e140d61c4635a13771067758862b\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
 
 对应上面这样一串 HTML 分析如下：
 
@@ -148,17 +144,31 @@ IFC 的形成条件非常简单，块级元素中仅包含内联级别元素，�
 * once you start：匿名的内联盒子；
 * looking into it.：匿名的内联盒子。
 
-参考：[Inline formatting contexts](https://link.juejin.cn/?target=https%3A%2F%2Fwww.w3.org%2FTR%2FCSS2%2Fvisuren.html%23inline-formatting)
-
-**IFC 应用场景**
+### **4. IFC 应用场景**
 
 * 水平居中：当一个块要在环境中水平居中时，设置其为 inline-block 则会在外层产生 IFC，通过 text-align 则可以使其水平居中。
 * 垂直居中：创建一个 IFC，用其中一个元素撑开父元素的高度，然后设置其 vertical-align: middle，其他行内元素则可以在此父元素下垂直居中。
 
-偷个懒，demo 和图我就不做了。
+## 四、FFC
 
-\
-作者：大海我来了\
-链接：https://juejin.cn/post/6941206439624966152\
-来源：稀土掘金\
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+FFC 全称：Flexible Formatting Context 弹性盒格式化上下文。
+
+CSS3 引入了一种新的布局模型—— flex 布局。
+
+flex 是 flexible box  的缩写，一般称之为弹性盒模型。和 CSS3 其他属性不一样，flexbox 并不是一个属性，而是一个模块，包括多个 CSS3 属性。flex 布局提供一种更加有效的方式来进行容器内的项目布局，以适应各种类型的显示设备和各种尺寸的屏幕，使用 Flexbox 布局实际上就是声明创建了 FFC(自适应格式上下文)。
+
+### 五、GFC
+
+GFC 全称：Grids Formatting Context 网格格式化上下文。
+
+CSS3 引入的一种新的布局模型—— Grids 网格布局，目前暂未推广使用，使用频率较低，简单了解即可。
+
+Grid 布局与 Flex 布局有一定的相似性，都可以指定容器内部多个项目的位置。但是，它们也存在重大区别。
+
+Flex 布局是轴线布局，只能指定"项目"针对轴线的位置，可以看作是一维布局。Grid 布局则是将容器划分成"行"和"列"，产生单元格，然后指定"项目所在"的单元格，可以看作是二维布局。Grid 布局远比 Flex 布局强大。
+
+## 六、参考
+
+* [CSS 格式化上下文基本介绍](https://juejin.cn/post/6941355126191816711)
+* [大白话讲清楚什么是 BFC](https://juejin.cn/post/6950082193632788493)
+* [万字 CSS 基础拾遗](https://juejin.cn/post/6941206439624966152)
