@@ -80,7 +80,7 @@ CSS 选择器有如下几种：
 注意事项：
 
 * 超链接的4种状态(访问前，鼠标悬停，当前被点击，已访问)，需要有特定的书写顺序才能生效；**a:hover 必须位于 a:link 和 a:visited 之后，a:active 必须位于 a:hover 之后**。
-* E:first-child 选择符，E必须是它的兄弟元素中的第一个元素，换言之，E必须是父元素的第一个子元素。与之类似的伪类还有 E:last-child，只不过情况正好相反，需要它是最后一个子元素。
+* E:first-child 选择符，E 必须是它的兄弟元素中的第一个元素，换言之，E 必须是父元素的第一个子元素。与之类似的伪类还有 E:last-child，只不过情况正好相反，需要它是最后一个子元素。
 
 ### 5. 伪元素选择器 <a href="#jdtb4" id="jdtb4"></a>
 
@@ -96,7 +96,7 @@ CSS 选择器有如下几种：
 注意事项：
 
 * 一个选择器中只能使用一个伪元素；
-* CSS3 中伪元素应该用双冒号，以便区分伪元素和伪类。但是旧版的规范未做明确区分，所以大多数浏览器中支持部分伪元素使用单双冒号两种写法；
+* CSS3 中**伪元素应该用双冒号，以便区分伪元素和伪类**。但是旧版的规范未做明确区分，所以大多数浏览器中支持部分伪元素使用单双冒号两种写法；
 
 ## 三、优先级 <a href="#gigaj" id="gigaj"></a>
 
@@ -162,7 +162,7 @@ html body #nav .selected > a:hover  /* (0, 1, 2, 3) */
 
 * html:
 
-```
+```html
 <div class="nav-list" id="nav-list">
   <div class="item">nav1</div>
   <div class="item">nav2</div>
@@ -171,13 +171,13 @@ html body #nav .selected > a:hover  /* (0, 1, 2, 3) */
 
 * CSS：
 
-```
+```css
 #nav-list .item {
-	color: #f00;
+  color: #f00;
 }
 
 .nav-list .item {
-	color: #0f0;
+  color: #0f0;
 }
 ```
 
@@ -195,23 +195,35 @@ html body #nav .selected > a:hover  /* (0, 1, 2, 3) */
 
 ### 1. :not() 的应用 <a href="#m2exl" id="m2exl"></a>
 
-假定有个列表，每个列表项都有一条底边线，但是最后一项不需要底边线。
+* 给一组元素的除了最后一个以外加样式；
 
+```css
+// 给该列表中除最后一项外的所有列表项加一条底边线。
 li:not(:last-child) { border-bottom: 1px solid #ddd; }
+```
 
-上述代码的意思是：给该列表中除最后一项外的所有列表项加一条底边线。
+* 选择包含子元素的元素；
 
-选择包含子元素的div元素：
-
+```css
+// 选择包含子元素的div元素
 div:not(:empty)
+```
 
 ### 2. child 和 type 的差异 <a href="#fcxlv" id="fcxlv"></a>
 
-这两个系列的属性确实很相似，对于不熟悉的人可能很难区分。
+first-of-type vs first-child:
 
-**E:first-of-type 总是能命中父元素的第1个为E的子元素，不论父元素第1个子元素是否为E；而E:first-child里的E元素必须是它的兄弟元素中的第一个元素，否则匹配失效。E:last-of-type 与E:last-child也是同理。**\
-**E:nth-of-type(n)总是能命中父元素的第n个为E的子元素，不论父元素第n个子元素是否为E；而E:nth-child(n)会选择父元素的第n个子元素E，如果第n个子元素不是E，则是无效选择符，但n会递增。**\
-关于:nth-child()与:nth-of-type()的区别可以看[这篇文章](https://link.segmentfault.com/?enc=9BhfVvKNwp8EmBUgnDY51Q%3D%3D.LP2dfRYLp6002FHqon8G9fgB%2Boue1EUncVy5WxctHGCAf0btVaqFD%2F12FbXsBSd1SDjLN3n6p9BOvlvizkizsvfJiQTGZQ90dRU%2Bopr18TKVlka0fEOq8Ozv5SXx8aKAAJVxMLJi6BhH9dhxTfo9XPHegZ%2BXKv%2FhMctze3xTlmvMDhtSI9juI3R8AYio%2FONcacdkQm9oOtw%2BNi38%2FJ8YnA%3D%3D)
+* E:first-of-type 总是能命中父元素的第1个为 E 的子元素，不论父元素第1个子元素是否为 E；
+* E:first-child 里的 E 元素必须是它的兄弟元素中的第一个元素，否则匹配失效；
+
+last-of-type vs last-child:
+
+* E:last-of-type 与 E:last-child 也是同理；
+
+nth-of-type(n) vs nth-child(n):
+
+* E:nth-of-type(n) 总是能命中父元素的第 n 个为 E 的子元素，不论父元素第 n 个子元素是否为 E；
+* E:nth-child(n) 会选择父元素的第 n 个子元素 E，如果第 n 个子元素不是 E，则是无效选择符，但n会递增。
 
 ### 3. !important 设置的样式一定生效吗 <a href="#ekqis" id="ekqis"></a>
 

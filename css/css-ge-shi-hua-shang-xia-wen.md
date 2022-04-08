@@ -1,4 +1,4 @@
-# 格式化上下文
+# CSS 格式化上下文
 
 ## 一、引言 <a href="#yswwx" id="yswwx"></a>
 
@@ -13,6 +13,8 @@ Box 是 CSS 布局的对象和基本单位， 直观点来说，就是一个页�
 * FFC (Flex Formatting Context) 弹性格式化上下文；
 * GFC (Grid Formatting Context) 格栅格式化上下文；
 
+其中 BFC 和 IFC 是基础，也是最重要的。
+
 ## 二、**BFC**
 
 ### 1. 概念
@@ -24,21 +26,21 @@ Box 是 CSS 布局的对象和基本单位， 直观点来说，就是一个页�
 ### **2. BFC 渲染规则**
 
 * 内部的盒子会在垂直方向，一个接一个地放置；
-* 盒子垂直方向的距离由 margin 决定，属于同一个 BFC 的两个相邻盒子的 margin 会发生重叠；
+* 盒子垂直方向的距离由 margin 决定，**属于同一个 BFC 的两个相邻盒子的 margin 会发生重叠**；
 * 每个元素的 margin 的左边，与包含块 border 的左边相接触(对于从左往右的格式化，否则相反)，即使存在浮动也是如此；
-* BFC 的区域不会与 float 盒子重叠；
-* BFC 就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+* **BFC 的区域不会与 float 盒子重叠**；
+* BFC 就是页面上的一个隔离的独立容器，**容器里面的子元素不会影响到外面的元素**。反之也如此。
 * 计算 BFC 的高度时，浮动元素也参与计算。
 
 ### **3. 创建 BFC**
 
-只需要设置特定的样式即能触发  BFC:
+只需要设置特定的样式即能触发 BFC:
 
 * html 根元素;
-* float 的值不为 none;
-* overflow 的值不为visible；
-* display 的值为 table-cell, table-caption, inline-block, flex, inline-flex, grid, inline-grid 中的任何一个；
-* position 的值不为 relative 和 static。
+* float 的值**不为** none;
+* overflow 的值**不为** visible；
+* display 的值**为** table-cell, table-caption, inline-block, flex, inline-flex, grid 或者 inline-grid；
+* position 的值**不为** relative 和 static。
 
 ### **4. BFC 应用场景**
 
@@ -121,7 +123,7 @@ IFC 的形成条件非常简单，块级元素中仅包含内联级别元素，�
 * 节点在垂直方向上以不同形式对齐；
 * 能把在一行上的框都完全包含进去的一个矩形区域，被称为该行的线盒（line box）。线盒的宽度是由包含块（containing box）和与其中的浮动来决定；
 * IFC 中的 line box 一般左右边贴紧其包含块，但 float 元素会优先排列。
-* IFC 中的 line box 高度由 line-height 计算规则来确定，同个 IFC 下的多个 line box 高度可能会不同；
+* **IFC 中的 line box 高度由 line-height 计算规则来确定，同个 IFC 下的多个 line box 高度可能会不同；**
 * 当内联级盒子的总宽度少于包含它们的 line box 时，其水平渲染规则由 text-align 属性值来决定；
 * 当一个内联盒子超过父元素的宽度时，它会被分割成多盒子，这些盒子分布在多个 line box 中。如果子元素未设置强制换行的情况下，inline box 将不可被分割，将会溢出父元素。
 
@@ -140,7 +142,7 @@ IFC 的形成条件非常简单，块级元素中仅包含内联级别元素，�
 * p 标签是一个 block container，对内将产生一个 IFC；
 * 由于一行没办法显示完全，所以产生了 2 个线盒（line box）；线盒的宽度就继承了 p 的宽度；高度是由里面的内联盒子的 line-height 决定；
 * It can get：匿名的内联盒子；
-* very complicated：strong 标签产生的内联盒子；
+* very complicated: strong 标签产生的内联盒子；
 * once you start：匿名的内联盒子；
 * looking into it.：匿名的内联盒子。
 
