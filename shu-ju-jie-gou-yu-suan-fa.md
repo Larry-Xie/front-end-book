@@ -21,6 +21,7 @@
 
 * [宫水三叶的刷题日记](https://github.com/SharingSource/LogicStack-LeetCode/tree/main/PDF)
 * [完全背包问题](https://leetcode-cn.com/problems/coin-change/solution/dai-ma-sui-xiang-lu-dai-ni-xue-tou-wan-q-80r7/)
+* [KMP 算法](https://juejin.cn/post/6854573206896918542)
 
 ![](<.gitbook/assets/image (13) (1).png>)
 
