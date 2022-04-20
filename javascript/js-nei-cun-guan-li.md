@@ -210,8 +210,8 @@ var a3 = a1.concat(a2);
 栈空间即调用栈，栈它是有一个先入后出的特性，调用栈亦是如此。
 
 * 在调用栈中会有一个 **记录当前执行状态的指针（称为 ESP ）**，指向调用栈中正在执行函数 A 的执行上下文，表示当前正在执行 A 函数。
-* 当 A 函数执行完成后会进入 B 函数，这时 JS 会将 ESP 下移到 B 函数，这个 ESP 下移操作就是销毁 A 函数执行上下文的过程
-* 当 A 函数执行结束之后， ESP 向下移动到 B 函数的执行上下文中，上面 A 函数的执行上下文虽然保存在栈内存中，但是已经是无效内存了。比如当 B 函数再次调用另外一个函数时，这块内容会被直接覆盖掉，用来存放另外一个函数的执行上下文。
+* 当 A 函数执行完成后会进入 B 函数，这时 JS 会将 ESP 下移到 B 函数，**这个 ESP 下移操作就是销毁 A 函数执行上下文的过程**。
+* 当 A 函数执行结束之后， ESP 向下移动到 B 函数的执行上下文中，上面 A 函数的执行上下文虽然保存在栈内存中，但是已经是无效内存了。比如当 B 函数再次调用另外一个函数时，**这块内容会被直接覆盖掉**，用来存放另外一个函数的执行上下文。
 
 ![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9220979bee984c63b5ab04ed1759c31b\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
 
@@ -339,13 +339,13 @@ var a3 = a1.concat(a2);
 
 编程语言偏好不同的内存管理方式。但是，某段内存是否被使用实际上是一个不可判定问题。换句话说，只有开发人员可以明确某块内存是否可以返回给操作系统。
 
-JavaScript 中有以下几种常见的内存泄漏：
+关于内存泄漏的排查可以参见[这里](https://juejin.cn/post/6984188410659340324#heading-11)，JavaScript 中有以下几种常见的内存泄漏：
 
 ### **1. 全局变量**
 
 JavaScript 用一种有趣的方式处理未声明的变量：当引用一个未声明的变量时，在 _global_ 对象中创建一个新变量。在浏览器中，全局对象将是 `window`，这意味着
 
-```
+```javascript
 function foo(arg) {
     bar = "some text";
 }
@@ -353,7 +353,7 @@ function foo(arg) {
 
 等同于:
 
-```
+```javascript
 function foo(arg) {
     window.bar = "some text";
 }
@@ -363,7 +363,7 @@ function foo(arg) {
 
 你也可以用 `this` 意外地创建一个全局变量：
 
-```
+```javascript
 function foo() {
     this.var1 = "potential accidental global";
 }
@@ -382,7 +382,7 @@ foo();
 
 提供观察者和其他接受回调的工具库通常确保所有对回调的引用在其实例无法访问时也变得无法访问。然而，下面的代码并不鲜见：
 
-```
+```javascript
 var serverData = loadData();
 setInterval(function() {
     var renderer = document.getElementById('renderer');
@@ -402,7 +402,7 @@ setInterval(function() {
 
 但是，尽管如此，一旦对象变得过时，移除观察者才是符合最佳实践的。看下面的例子：
 
-```
+```javascript
 var element = document.getElementById('launch-button');
 var counter = 0;
 function onClick(event) {
@@ -423,41 +423,69 @@ element.parentNode.removeChild(element);
 
 ### 3. 闭包
 
-JavaScript开发的一个关键方面是闭包：一个内部函数可以访问外部（封闭）函数的变量。由于JavaScript运行时的实现细节，可能以如下方式泄漏内存：
+JavaScript 开发的一个关键方面是闭包，简单的理解闭包就是一个内部函数可以访问外部（封闭）函数的变量。具体的定义有如下几种：
 
+* JavaScript 高级程序设计：闭包是指有权访问另一个函数作用域中的变量的函数；
+* JavaScript 权威指南：从技术的角度讲，所有的 JavaScript 函数都是闭包：它们都是对象，它们都关联到作用域链；
+* 你不知道的 JavaScript：当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行；
+
+按照上面三本书中的描述，那闭包所涉及的的范围就比较广了，我们这里暂时不去纠结闭包的定义，就以最简单、大家都认可的闭包例子来看闭包：
+
+```javascript
+function fn1(){
+  let test = new Array(1000).fill('isboyjc')
+  return function(){
+    console.log('hahaha')
+  }
+}
+let fn1Child = fn1()
+fn1Child()
 ```
-var theThing = null;
-var replaceThing = function () {
-  var originalThing = theThing;
-  var unused = function () {
-    if (originalThing) // a reference to 'originalThing'
-      console.log("hi");
-  };
-  theThing = {
-    longStr: new Array(1000000).join('*'),
-    someMethod: function () {
-      console.log("message");
-    }
-  };
-};
-setInterval(replaceThing, 1000);
+
+上例是闭包吗？它造成内存泄漏了吗？
+
+显然它是一个典型闭包，但是它并没有造成内存泄漏，因为返回的函数中并没有对 `fn1` 函数内部的引用，也就是说，函数 `fn1` 内部的 `test` 变量完全是可以被回收的，那我们再来看：
+
+```javascript
+function fn2(){
+  let test = new Array(1000).fill('isboyjc')
+  return function(){
+    console.log(test)
+    return test
+  }
+}
+let fn2Child = fn2()
+fn2Child()
 ```
 
-一旦调用了 `replaceThing` 函数，`theThing` 就得到一个新的对象，它由一个大数组和一个新的闭包（`someMethod`）组成。然而 `originalThing` 被一个由 `unused` 变量（这是从前一次调用 `replaceThing` 变量的 `Thing` 变量）所持有的闭包所引用。需要记住的是**一旦为同一个父作用域内的闭包创建作用域，作用域将被共享。**
+上例是闭包吗？它造成内存泄漏了吗？
 
-在个例子中，`someMethod` 创建的作用域与 `unused` 共享。`unused` 包含一个关于 `originalThing` 的引用。即使 `unused` 从未被引用过，`someMethod` 也可以通过 `replaceThing` 作用域之外的 `theThing` 来使用它（例如全局的某个地方）。由于 `someMethod` 与 `unused` 共享闭包范围，`unused` 指向 `originalThing` 的引用强制它保持活动状态（两个闭包之间的整个共享范围）。这阻止了它们的垃圾收集。
+显然它也是闭包，并且因为 `return` 的函数中存在函数 `fn2` 中的 `test` 变量引用，所以 `test` 并不会被回收，也就造成了内存泄漏。
 
-在上面的例子中，为闭包 `someMethod` 创建的作用域与 `unused` 共享，而 `unused` 又引用 `originalThing`。`someMethod` 可以通过 `replaceThing` 范围之外的 `theThing` 来引用，尽管 `unused` 从来没有被引用过。事实上，unused 对 `originalThing` 的引用要求它保持活跃，因为 `someMethod` 与 unused 的共享封闭范围。
+那么怎样解决呢？
 
-所有这些都可能导致大量的内存泄漏。当上面的代码片段一遍又一遍地运行时，您可以预期到内存使用率的上升。当垃圾收集器运行时，其大小不会缩小。一个闭包链被创建（在例子中它的根就是 `theThing` 变量），并且每个闭包作用域都包含对大数组的间接引用。
+其实在函数调用后，把外部的引用关系置空就好了，如下：
 
-Meteor 团队发现了这个问题，[它们有一篇很棒的文章](https://link.juejin.cn/?target=https%3A%2F%2Fblog.meteor.com%2Fan-interesting-kind-of-javascript-memory-leak-8b47d2e7f156)详细地描述了这个问题。
+```javascript
+function fn2(){
+  let test = new Array(1000).fill('isboyjc')
+  return function(){
+    console.log(test)
+    return test
+  }
+}
+let fn2Child = fn2()
+fn2Child()
+fn2Child = null
+```
+
+所以不是闭包会造成内存泄漏，应该说**不正当的使用闭包可能会造成内存泄漏**。
 
 ### **4. 超出 DOM 的引用**
 
 有些情况下开发人员在数据结构中存储 DOM 节点。假设你想快速更新表格中几行的内容。如果在字典或数组中存储对每个 DOM 行的引用，就会产生两个对同一个 DOM 元素的引用：一个在 DOM 树中，另一个在字典中。如果你决定删除这些行，你需要记住让两个引用都无法访问。
 
-```
+```javascript
 var elements = {
     button: document.getElementById('button'),
     image: document.getElementById('image')
@@ -487,6 +515,16 @@ function removeImage() {
 为了不影响执行上下文切换的效率，栈空间一般会设置小一些，而因为引用类型的数据占用的空间又比较大，栈空间存放不下，所以会把引用类型的数据存放在堆空间中。
 
 所以在一般情况下，**栈空间都不会设置太大，然后用来存放一些基本数据类型的数据**。而引用类型的数据占用的空间都比较大，所以这一类数据会被存放到堆中，**堆空间很大，能存放很多大的数据**，不过缺点是分配内存和回收内存都会占用一定的时间。
+
+### 2. 内存三大件
+
+其实前端关于内存方面主要有三个问题，我把它们亲切的称作内存三大件：
+
+`内存泄漏` 我们说很久了，对象已经不再使用但没有被回收，内存没有被释放，即内存泄漏，那想要避免就避免让无用数据还存在引用关系，也就是多注意我们上面说的常见的几种内存泄漏的情况。
+
+`内存膨胀` 即在短时间内内存占用极速上升到达一个峰值，想要避免需要使用技术手段减少对内存的占用。
+
+`频繁 GC` 同这个名字，就是 GC 执行的特别频繁，一般出现在频繁使用大的临时变量导致新生代空间被装满的速度极快，而每次新生代装满时就会触发 GC，频繁 GC 同样会导致页面卡顿，想要避免的话就不要搞太多的临时变量，因为临时变量不用了就会被回收，这和我们内存泄漏中说避免使用全局变量冲突，其实，只要把握好其中的度，不太过分就 OK。
 
 ## 七、参考
 
