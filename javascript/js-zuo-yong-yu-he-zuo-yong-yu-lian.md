@@ -537,22 +537,20 @@ foo = function() {
 };
 ```
 
-### 3. 模拟块级作用域
+### 3. Local 对象
 
-没有块级作用域会给我们的开发带来许多困扰。例如上面的 for 循环例子中，i 值仍然在作用域中可以被访问，那么这个值就会对作用域中的其他同名变量造成干扰。因此在没有块级作用域时，需要模拟块级作用域。我们知道，一个函数可以生成一个作用域，这个时候，就能够利用函数达到模拟的目的。
+我们知道，对于一个函数而言，完整的作用域包含一个函数自身的 Local 对象。\
 
-```javascript
-var arr = [1, 2, 3, 4, 5];
 
-// 自执行函数
-(function () {
-  for (var i = 0; i < arr.length; i++) {
-    console.log('do something by ', i);
-  }
-})();
+![](https://images.xiaozhuanlan.com/photo/2020/f46f1d48a4dad4baff5ebe57f4bcda7e.png)
 
-console.log(i); // i is not defined
-```
+Local 对象，由**函数参数，var 声明的变量，let/const 声明的变量，function 声明的变量，class 声明的变量，this 指向等**共同组成。
+
+**仅仅只有处于栈顶的执行上下文，才会生成 Local 对象**。并且 Local 对象的具体内容会在执行上下文的生命周期中不断变化。也就意味着，在执行上下文的创建阶段，只有函数参数、function 声明的变量、this 指向 能够明确具体的值，其他变量的初始值都为 undefined，然后在代码执行过程中逐步明确赋值。
+
+![](https://images.xiaozhuanlan.com/photo/2020/8628f8ff00b43405c718fb15d98d2635.png)
+
+需要注意的是，Local 对象与环境记录对象非常相似，但他们并非相同的对象。不过这样的差别仅仅只是体现在具体的实现上，从理解执行上下文运行机制的理论角度来说，我们可以认为他们是同一个对象。
 
 ## 五、参考
 

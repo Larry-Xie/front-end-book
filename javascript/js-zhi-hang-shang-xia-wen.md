@@ -19,6 +19,12 @@
 
 简而言之，**执行上下文是计算和执行 JavaScript 代码的环境的抽象概念**。每当 JavaScript 代码在运行的时候，它都是在执行上下文中运行。
 
+在任何时候，只能有一个执行上下文正在执行，我们可以称之为**运行时上下文**\_「the running execution context」。\_运行时上下文始终处于栈顶。当代码执行过程中，有新的函数调用，新的执行上下文会被创建，入栈，并且成为新的运行时上下文。
+
+在 ECMAScript 中，使用 Component 来统一称呼这些实体对象。
+
+![执行上下文的组成](https://images.xiaozhuanlan.com/photo/2020/b1d113f66f7ee892315f4b8928236211.png)
+
 ### **2. 类型** <a href="#e6-89-a7-e8-a1-8c-e4-b8-8a-e4-b8-8b-e6-96-87-e7-9a-84-e7-b1-bb-e5-9e-8b" id="e6-89-a7-e8-a1-8c-e4-b8-8a-e4-b8-8b-e6-96-87-e7-9a-84-e7-b1-bb-e5-9e-8b"></a>
 
 JavaScript 中有三种执行上下文类型。
@@ -32,7 +38,10 @@ JavaScript 中有三种执行上下文类型。
 对于每个执行上下文，我们都可以把它看作有个生命周期，生命周期可以分成两个阶段：
 
 * **创建阶段**
-* **执行阶段**
+* **执行阶段**\
+
+
+![执行上下文生命周期](https://images.xiaozhuanlan.com/photo/2020/14e745e6cbbb5b6bddd57e3971d3d315.png)
 
 ### **4. 创建阶段** <a href="#e5-88-9b-e5-bb-ba-e9-98-b6-e6-ae-b5" id="e5-88-9b-e5-bb-ba-e9-98-b6-e6-ae-b5"></a>
 
@@ -97,6 +106,8 @@ bar();       // 'this' 指向全局 window 对象，因为没有指定引用对�
 
 1. **声明式环境记录器**(Declarative environment record)存储变量、函数和参数。
 2. **对象环境记录器**(Object environment record)用来定义出现在**全局上下文**中的变量和函数的关系。
+
+![环境记录器类型](https://images.xiaozhuanlan.com/photo/2020/d7d5904374fde9f42d6a2277e5113451.png)
 
 简而言之，
 
