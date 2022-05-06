@@ -8,8 +8,6 @@
 
 明确了这一点，我们就很容易知道，只有在函数调用时(箭头函数除外)，this 的指向才会被确定。于是一个函数的 this 的指向，就变得非常灵活。这也是导致 this 难以理解的真正原因。
 
-``
-
 ## 二、调用位置 <a href="#1-tiao-yong-wei-zhi" id="1-tiao-yong-wei-zhi"></a>
 
 既然 this 的指向是再执行上下文创建的过程中确定的，并且和函数调用有关，那我们就需要知道是谁调用了该函数。调用位置就是函数在代码中**被调用的位置**（而不是声明的位置）。
@@ -522,15 +520,7 @@ foo.call(obj); // 2
 * 只使用词法作用域并完全抛弃错误this风格的代码；
 * 完全采用this风格，在必要时使用`bind(..)`，尽量避免使用 `self = this` 和箭头函数。
 
-## 七、函数柯里化 <a href="#shang-qi-si-kao-ti-jie" id="shang-qi-si-kao-ti-jie"></a>
-
-关于函数柯里化，在这不做过多介绍，只要知道函数柯里化是什么：
-
-在计算机科学中，柯里化（英语：`Currying`），又译为`卡瑞化`或`加里化`，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且**返回接受余下的参数而且返回结果的新函数**的技术。
-
-例子可以看[这篇文章](https://juejin.cn/post/6844903512942313479)里的。
-
-## 八、考点
+## 七、考点
 
 ### 1. apply vs call vs bind
 
@@ -585,7 +575,74 @@ _fn(1, 4); // 43 因为参数被绑定，因此重新传入参数是无效的
 
 call/apply/bind的特性，让JavaScript变得十分灵活，他们的应用场景十分广泛。
 
-## 九、参考
+### 2. 箭头函数与普通函数的区别
+
+**（1）箭头函数比普通函数更加简洁**
+
+* 如果没有参数，就直接写一个空括号即可
+* 如果只有一个参数，可以省去参数的括号
+* 如果有多个参数，用逗号分割
+* 如果函数体的返回值只有一句，可以省略大括号
+* 如果函数体不需要返回值，且只有一句话，可以给这个语句前面加一个void关键字。最常见的就是调用一个函数：
+
+```javascript
+let fn = () => void doesNotReturn();
+复制代码
+```
+
+**（2）箭头函数没有自己的this**
+
+箭头函数不会创建自己的this， 所以它没有自己的this，它只会在自己作用域的上一层继承this。所以箭头函数中this的指向在它在定义时已经确定了，之后不会改变。
+
+**（3）箭头函数继承来的this指向永远不会改变**
+
+```javascript
+var id = 'GLOBAL';
+var obj = {
+  id: 'OBJ',
+  a: function(){
+    console.log(this.id);
+  },
+  b: () => {
+    console.log(this.id);
+  }
+};
+obj.a();    // 'OBJ'
+obj.b();    // 'GLOBAL'
+new obj.a()  // undefined
+new obj.b()  // Uncaught TypeError: obj.b is not a constructor
+复制代码
+```
+
+对象obj的方法b是使用箭头函数定义的，这个函数中的this就永远指向它定义时所处的全局执行环境中的this，即便这个函数是作为对象obj的方法调用，this依旧指向Window对象。需要注意，定义对象的大括号`{}`是无法形成一个单独的执行环境的，它依旧是处于全局执行环境中。
+
+**（4）call()、apply()、bind()等方法不能改变箭头函数中this的指向**
+
+```javascript
+var id = 'Global';
+let fun1 = () => {
+    console.log(this.id)
+};
+fun1();                     // 'Global'
+fun1.call({id: 'Obj'});     // 'Global'
+fun1.apply({id: 'Obj'});    // 'Global'
+fun1.bind({id: 'Obj'})();   // 'Global'
+复制代码
+```
+
+**（5）箭头函数不能作为构造函数使用**
+
+构造函数在new的步骤在上面已经说过了，实际上第二步就是将函数中的this指向该对象。 但是由于箭头函数时没有自己的this的，且this指向外层的执行环境，且不能改变指向，所以不能当做构造函数使用。
+
+**（6）箭头函数没有自己的arguments**
+
+箭头函数没有自己的arguments对象。在箭头函数中访问arguments实际上获得的是它外层函数的arguments值。
+
+**（7）箭头函数没有prototype**
+
+**（8）箭头函数不能用作Generator函数，不能使用yeild关键字**
+
+## 八、参考
 
 * [JavaScript 深入之史上最全 this 绑定全面解析](https://muyiy.cn/blog/3/3.1.html)
 * [图解 javascript 的 this 指向](https://juejin.cn/post/6844903941021384711)

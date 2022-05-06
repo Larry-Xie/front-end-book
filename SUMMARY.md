@@ -53,6 +53,7 @@
   * [DOM](javascript/dom.md)
   * [ECMAScript](javascript/ecmascript.md)
   * [JS 基础](javascript/js-ji-chu.md)
+  * [JS 数据类型](javascript/js-shu-ju-lei-xing.md)
   * [JS 内存管理](javascript/js-nei-cun-guan-li.md)
   * [JS 执行上下文](javascript/js-zhi-hang-shang-xia-wen.md)
   * [JS 作用域和作用域链](javascript/js-zuo-yong-yu-he-zuo-yong-yu-lian.md)
