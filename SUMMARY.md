@@ -62,7 +62,7 @@
   * [JS 原型和原型链](javascript/js-yuan-xing-he-yuan-xing-lian.md)
   * [JS 事件循环机制](javascript/js-shi-jian-xun-huan-ji-zhi.md)
   * [JS 异步](javascript/js-yi-bu.md)
-  * [JS 深浅拷贝](javascript/js-shen-qian-kao-bei.md)
+  * [JS 深浅拷贝](javascript/js-shen-kao-bei-he-qian-kao-bei.md)
   * [JS 继承](javascript/js-ji-cheng.md)
   * [JS 常用函数](javascript/js-chang-yong-han-shu.md)
   * [JS 模块化](javascript/js-mo-kuai-hua.md)

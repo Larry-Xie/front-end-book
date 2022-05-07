@@ -538,6 +538,7 @@ function removeImage() {
 
 * [JavaScript 工作原理：内存管理 + 处理常见的4种内存泄漏](https://juejin.cn/post/6844903519078580238)
 * [12张图带你看看 V8 是如何执行和回收 JavaScript 代码的](https://juejin.cn/post/7002763440800399391)
+* [JavaScript 核心进阶 - V8 垃圾回收机制精讲](https://xiaozhuanlan.com/advance/4158792360)
 * [JavaScript 的垃圾数据是怎么回收的](https://juejin.cn/post/6977388535418470413)
 * [JavaScript 内存机制](https://juejin.cn/post/6844903615300108302)
 * [你的程序中可能存在内存泄漏](https://juejin.cn/post/6984188410659340324)
