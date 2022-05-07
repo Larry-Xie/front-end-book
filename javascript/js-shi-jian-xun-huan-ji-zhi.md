@@ -65,6 +65,20 @@ JavaScript 这个单线程是怎样处理任务的？
 
 ![JS 单线程执行](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/81ccc92d97b94822bde4cf6485de124f\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
 
+#### 2.5 浏览器为什么可以执行异步任务
+
+JS 是单线程的，在同一个时间只能做一件事情，**那为什么浏览器可以同时执行异步任务呢？**
+
+这是因为浏览器是多线程的，当 JS 需要执行异步任务时，浏览器会另外启动一个线程去执行该任务。也就是说，JavaScript是单线程的指的是执行JavaScript代码的线程只有一个，是浏览器提供的JavaScript引擎线程（主线程）。除此之外，浏览器中还有定时器线程、 HTTP 请求线程等线程，这些线程主要不是来执行 JS 代码的。
+
+比如主线程中需要发送数据请求，就会把这个任务交给异步 HTTP 请求线程去执行，等请求数据返回之后，再将 callback 里需要执行的 JS 回调交给 JS 引擎线程去执行。也就是说，浏览器才是真正执行发送请求这个任务的角色，而 JS 只是负责执行最后的回调处理。所以这里的异步不是 JS 自身实现的，而是浏览器为其提供的能力。
+
+下图是Chrome浏览器的架构图：
+
+![Chrome 简易架构](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7aac70e314114e5297a8aeec3bfe853f\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
+
+可以看到，Chrome不仅拥有多个进程，还有多个线程。以渲染进程为例，就包含GUI渲染线程、JS引擎线程、事件触发线程、定时器触发线程、异步HTTP请求线程。这些线程为 JS 在浏览器中完成异步任务提供了基础。
+
 ### 3. JS 单线程问题
 
 **页面线程所有执行的任务都来自于消息队列**。消息队列是先进先出的特性，即放入队列中的任务，需要等待前面的任务被执行完，才会被执行。鉴于这个属性，就有如下两个问题需要解决：
@@ -400,6 +414,7 @@ console.log('end');
 ## 五、参考
 
 * [事件循环机制（Event Loop）](https://juejin.cn/post/6977746526441308173)
+* [彻底搞懂 JavaScript 事件循环](https://juejin.cn/post/6992167223523541023)
 * [不同的回调执行时机：宏任务和微任务](https://juejin.cn/post/6978122767451291679)
 * [JavaScript 核心进阶 - 事件循环机制](https://xiaozhuanlan.com/advance/5839760214)
 * [JS 事件循环机制](https://juejin.cn/post/6844903638238756878)
