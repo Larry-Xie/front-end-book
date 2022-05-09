@@ -1,10 +1,14 @@
 # JS 常用函数
 
-一
+## 一、引言
+
+可以
 
 * [JavaScript 工具函数大全](https://juejin.cn/post/6844903966526930951)
 * [常用的前端 JavaScript 方法封装](https://www.jianshu.com/p/cc01443d1359)
 * [前端常用的 js 函数方法](https://juejin.cn/post/7030346779539275806)
+
+二、
 
 ### 1.为什么需要函数防抖和函数节流？
 

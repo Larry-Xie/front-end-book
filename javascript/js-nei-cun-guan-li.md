@@ -308,6 +308,8 @@ var a3 = a1.concat(a2);
 * 分配速度不理想，每次分配都需要遍历空闲列表找到足够大的分块
 * 与写时复制技术不兼容，因为每次都会在活动对象上打上标记
 
+![标记-清除算法](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4ef5e9bbcc094de1be9e4d932a742549\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
+
 **标记-整理算法**
 
 对一块内存多次执行标记-清除算法后，会产生大量不连续的内存碎片；而碎片过多会导致大对象无法分配到足够的连续内存，于是又产生了 **标记-整理（Mark-Compact）算法**。
@@ -317,11 +319,15 @@ var a3 = a1.concat(a2);
 * 优点：有效利用了堆，不会出现内存碎片，也不会像复制算法那样只能利用堆的一部分
 * 缺点：整理过程开销会变大，需要多次搜索堆
 
+![标记-整理算法](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/01abc7919b78482089055ba3dfef38ef\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
+
 **全停顿**
 
 由于 JavaScript 是运行在主线程之上的，一旦执行垃圾回收算法，都需要将正在执行的 JavaScript 脚本暂停下来，待垃圾回收完毕后再恢复脚本执行。这种行为叫做 **全停顿（Stop-The-World）**。
 
 比如堆中的数据有 1.5GB，V8 实现一次完整的垃圾回收需要 1 秒以上的时间，这也是由于垃圾回收而引起 JavaScript 线程暂停执行的时间，若是这样的时间花销，那么应用的性能和响应能力都会直线下降。
+
+![全停顿](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/829ce8749c654daa935a037f3fb704c7\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
 
 在 V8 新生代的垃圾回收中，因其空间较小，且存活对象较少，所以全停顿的影响不大，但老生代就不一样了。如果在执行垃圾回收的过程中，占用主线程时间过久，在垃圾回收的这段时间（比如200ms）内，主线程是不能做其他事情的。比如页面正在执行一个 JavaScript 动画，因为垃圾回收器在工作，就会导致这个动画在这 200 毫秒内无法执行的，这将会造成页面的卡顿现象。
 
@@ -330,6 +336,8 @@ var a3 = a1.concat(a2);
 为了降低老生代的垃圾回收而造成的卡顿，V8 将标记过程分为一个个的 **子标记过程**，同时**让垃圾回收标记和 JavaScript 应用逻辑交替进行**，直到标记阶段完成，这个算法称为**增量标记（Incremental Marking）算法**。
 
 使用增量标记算法，可以把一个完整的垃圾回收任务拆分为很多小的任务，这些小的任务执行时间比较短，可以穿插在其他的 JavaScript 任务中间执行，这样当执行上述动画效果时，就不会让用户因为垃圾回收任务而感受到页面的卡顿了。
+
+![增量标记算法](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6e6906238d314d5eb0f8be2b45558cf1\~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp)
 
 ## 五、JS 内存泄漏
 
@@ -529,6 +537,8 @@ function removeImage() {
 ## 七、参考
 
 * [JavaScript 工作原理：内存管理 + 处理常见的4种内存泄漏](https://juejin.cn/post/6844903519078580238)
+* [12张图带你看看 V8 是如何执行和回收 JavaScript 代码的](https://juejin.cn/post/7002763440800399391)
+* [JavaScript 核心进阶 - V8 垃圾回收机制精讲](https://xiaozhuanlan.com/advance/4158792360)
 * [JavaScript 的垃圾数据是怎么回收的](https://juejin.cn/post/6977388535418470413)
 * [JavaScript 内存机制](https://juejin.cn/post/6844903615300108302)
 * [你的程序中可能存在内存泄漏](https://juejin.cn/post/6984188410659340324)
