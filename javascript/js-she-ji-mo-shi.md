@@ -2507,3 +2507,4 @@ class Soldier extends Role {
 ## 九、参考
 
 * [JavaScript 核心进阶 - 设计模式](https://xiaozhuanlan.com/advance/7093842615)
+* [学用 JavaScript 设计模式](https://wiki.jikexueyuan.com/project/javascript-design-patterns/overwise.html)
