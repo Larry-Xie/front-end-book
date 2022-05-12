@@ -1,8 +1,8 @@
 # JS 模块化
 
-一、引言
+## 一、引言
 
-> 本书所指的模块，都是代码模块，而非业务功能模块。
+这里所指的模块，都是代码模块，而非业务功能模块。
 
 我们在前面学习了很多方法，用于拆分代码的规模。例如把一段逻辑封装为函数一些实例提炼成为类。
 
@@ -12,15 +12,13 @@
 
 模块最核心的思想是隔离。要有自己的内部属性，内部方法，以及自己来决定哪些属性与方法能够被其他模块访问。但是 JavaScript 在最初并没有模块相关的支持语法。因此我们只能利用许多别的类似的，具备隔离属性的方式来模拟模块。
 
-#### 一、模块的发展历程 <a href="#section" id="section"></a>
-
 了解模块发展历程有助于增加我们的知识厚度。目前在实践中，我们仅使用最新的模块化语法。
 
-**1、 函数自执行**
+## **二、 函数自执行**
 
 因为没有模块化语法，我们常常用自执行函数来模拟模块。
 
-```js
+```javascript
 // 自执行函数模拟模块化
 
 // Person 模块
@@ -61,7 +59,7 @@
 })()
 ```
 
-**2、CommonJS 规范**
+## **三、CommonJS**
 
 Node 应用的模块，就是采用 CommonJS 规范来实现。
 
@@ -73,7 +71,7 @@ Node 应用的模块，就是采用 CommonJS 规范来实现。
 
 在其他模块，可以使用 `require` 加载该模块，加载的结果，就是 `module.exports` 的合集。
 
-```js
+```javascript
 // person 模块
 // person.js
 let number = 0
@@ -95,7 +93,7 @@ module.exports.getInstanceNumber = function () {
 module.exports.Person = Person
 ```
 
-```js
+```javascript
 // main.js
 // 引入模块
 const person = require('./person.js')
@@ -113,7 +111,7 @@ p3.getName()
 console.log('实例化个数', getInstanceNumber())
 ```
 
-**3、AMD**
+## **四、AMD**
 
 AMD 是适用于浏览器环境的异步加载模块规范，它是一种依赖前置的规范。
 
@@ -121,7 +119,7 @@ AMD 是适用于浏览器环境的异步加载模块规范，它是一种依赖�
 
 `require.js` 与 `curl.js` 实现了该规范。该规范使用 `define` 定义一个模块
 
-```js
+```javascript
 // person.js
 define(function() {
   let number = 0
@@ -148,7 +146,7 @@ define(function() {
 })
 ```
 
-```js
+```javascript
 // main.js
 // 引入模块
 define(['./person.js'], function(person) {
@@ -166,13 +164,13 @@ define(['./person.js'], function(person) {
 })
 ```
 
-**4、CMD**
+## **五、CMD**
 
-CMD 规范是模仿 CommonJS，由阿里玉伯提出，`sea.js` 实现了该规范，这是一种就近依赖的规范
+CMD 规范是模仿 CommonJS，由阿里玉伯提出，`sea.js` 实现了该规范，这是一种就近依赖的规范。
 
 > 就近依赖：下载完之后，并不执行加载，回调函数中遇到 require 时才执行
 
-```js
+```javascript
 // person.js
 define(function(require, exports, module) {
   let number = 0
@@ -195,7 +193,7 @@ define(function(require, exports, module) {
 })
 ```
 
-```js
+```javascript
 // mian.js
 define(function(require) {
   const person = require('./person.js')
@@ -213,11 +211,11 @@ define(function(require) {
 })
 ```
 
-**5、UMD**
+## **六、UMD**
 
 UMD 是一个兼容写法，一个开源模块可能会提供给 CommonJS 标准的项目中实现，也可能提供给 AMD 标准的项目使用。UMD 应运而生。
 
-```js
+```javascript
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) { // AMD
     define(['person'], factory)
@@ -256,13 +254,13 @@ UMD 是一个兼容写法，一个开源模块可能会提供给 CommonJS 标准
 
 很多开源模块都会采用这种兼容性的写法。
 
-**6、ES6 Modules**
+## **七、ES6 Modules**
 
 ES6 提出了新的模块化语法规范。
 
 这也是目前我们在实践开发中，使用得最多的规范。
 
-```js
+```javascript
 // person.js
 let number = 0
 export function Person(name, age) {  // 暴露接口
@@ -282,7 +280,7 @@ export const getInstanceNumber = function () {
 }
 ```
 
-```js
+```javascript
 // main.js
 // 引入模块
 import {Person, getInstanceNumber} from './person.js'
@@ -297,3 +295,7 @@ p3.getName()
 
 console.log('实例化个数', getInstanceNumber())
 ```
+
+## 八、参考
+
+* [JavaScript 核心进阶 - 模块化](https://xiaozhuanlan.com/advance/1249708536)
