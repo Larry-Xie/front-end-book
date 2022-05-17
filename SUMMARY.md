@@ -73,7 +73,7 @@
   * [性能指标](xing-neng-you-hua/xing-neng-zhi-biao.md)
   * [性能调优工具](xing-neng-you-hua/xing-neng-tiao-you-gong-ju.md)
   * [性能优化加载篇](xing-neng-you-hua/xing-neng-you-hua-jia-zai-pian.md)
-  * [性能优化渲染篇](xing-neng-you-hua/xing-neng-you-hua-xuan-ran-pian.md)
+  * [性能优化执行篇](xing-neng-you-hua/xing-neng-you-hua-zhi-hang-pian.md)
 * [前端安全](qian-duan-an-quan.md)
 * [前端框架](qian-duan-kuang-jia.md)
 * [Angular](angular.md)
