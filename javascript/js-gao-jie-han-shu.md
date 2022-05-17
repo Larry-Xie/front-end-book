@@ -525,3 +525,4 @@ addEventLazy(document.getElementById('eventLazy'), 'click', function() {
 
 * [JavaScript 高阶函数浅析](https://muyiy.cn/blog/6/6.1.html)
 * [JavaScript 中高阶函数的魅力](https://juejin.cn/post/6844903668651819016)
+* [理解 JavaScript 中的高阶函数](https://juejin.cn/post/6844903713060945934)

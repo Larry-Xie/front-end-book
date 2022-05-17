@@ -66,7 +66,7 @@ ES6 从开始制定到最后发布，整整用了 15 年。
 
 ## 二、ECMAScript 2015
 
-直接看阮一峰的\<ECMAScript 6入门>：[http://es6.ruanyifeng.com](http://es6.ruanyifeng.com)
+直接看阮一峰的\<ECMAScript 6入门>：[http://es6.ruanyifeng.com](http://es6.ruanyifeng.com/)
 
 ## 三、ECMAScript 2016
 
@@ -582,7 +582,7 @@ async function process(array) {
 \
 https://mp.weixin.qq.com/s/FObn78n5SQyLYZpyuOD8qw\
 \
-https://scq000.github.io/2019/08/12/ES2019%E6%96%B0%E7%89%B9%E6%80%A7%E9%A2%84%E8%A7%88/](https://medium.freecodecamp.org/whats-new-in-javascript-es2019-8af4390d8494https://mp.weixin.qq.com/s/FObn78n5SQyLYZpyuOD8qwhttps://scq000.github.io/2019/08/12/ES2019%E6%96%B0%E7%89%B9%E6%80%A7%E9%A2%84%E8%A7%88/)
+https://scq000.github.io/2019/08/12/ES2019%E6%96%B0%E7%89%B9%E6%80%A7%E9%A2%84%E8%A7%88/](https://medium.freecodecamp.org/whats-new-in-javascript-es2019-8af4390d8494https://mp.weixin.qq.com/s/FObn78n5SQyLYZpyuOD8qwhttps:/scq000.github.io/2019/08/12/ES2019%E6%96%B0%E7%89%B9%E6%80%A7%E9%A2%84%E8%A7%88/)
 
 ## 七、ECMAScript 2020
 
