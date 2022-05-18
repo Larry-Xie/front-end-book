@@ -2,7 +2,7 @@
 
 ## 一、引言
 
-[WebSocket](http://websocket.org/) 是一种网络通信协议，很多高级功能都需要它。
+[WebSocket](http://websocket.org) 是一种网络通信协议，很多高级功能都需要它。
 
 ![WebSockets](http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051501.png)
 
@@ -267,12 +267,12 @@ WebSocket 服务器的实现，可以查看维基百科的[列表](https://en.wi
 常用的 Node 实现有以下三种。
 
 * [µWebSockets](https://github.com/uWebSockets/uWebSockets)
-* [Socket.IO](http://socket.io/)
+* [Socket.IO](http://socket.io)
 * [WebSocket-Node](https://github.com/theturtle32/WebSocket-Node)
 
 具体的用法请查看它们的文档，这里不详细介绍了。
 
-推荐一款非常特别的 WebSocket 服务器：[Websocketd](http://websocketd.com/)。
+推荐一款非常特别的 WebSocket 服务器：[Websocketd](http://websocketd.com)。
 
 ## 五、参考
 
