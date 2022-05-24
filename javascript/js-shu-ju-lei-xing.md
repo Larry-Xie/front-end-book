@@ -449,3 +449,4 @@ function myInstanceof(left, right) {
 ## 五、参考
 
 * [高频前端面试题汇总之 JavaScript 篇（上）](https://juejin.cn/post/6940945178899251230)
+* [网道 JavaScript 教程 - 数据类型转换](https://wangdoc.com/javascript/features/conversion.html)

@@ -37,10 +37,10 @@ border-radius: 10px;  /* 不带前缀的放到最后 */
 
 通常我们不在代码里直接写带有浏览器前缀的属性，因此出现很多工具来把这项工作自动化。
 
-* [Autoprefixer](https://github.com/postcss/autoprefixer)：采用[Can I Use...](http://caniuse.com)的数据库来判断哪些前缀是需要添加的；此外， 它是在本地完成编译的，类似预处理器。
-* [CSS3, Please!](http://css3please.com)和[pleeease](http://pleee-ase.io/playground.html)：可以把无前缀的CSS代码粘贴进去，它们会自动帮你把必要的前缀都加好。但这类网站因为使用成本太高所以已经过气了。
+* [Autoprefixer](https://github.com/postcss/autoprefixer)：采用[Can I Use...](http://caniuse.com/)的数据库来判断哪些前缀是需要添加的；此外， 它是在本地完成编译的，类似预处理器。
+* [CSS3, Please!](http://css3please.com/)和[pleeease](http://pleee-ase.io/playground.html)：可以把无前缀的CSS代码粘贴进去，它们会自动帮你把必要的前缀都加好。但这类网站因为使用成本太高所以已经过气了。
 * [-prefix-free](http://leaverou.github.io/prefixfree)：在浏览器中进行特性检测以决定哪些前缀是需要的。它的好处在于几乎不需要更新，因为其所有信息都是用一份属性清单在真实的浏览器环境中跑出来的结果。
-* 类似[Stylus](http://stylus-lang.com)、[LESS](http://lesscss.org)或[Sass](http://sass-lang.com)的预处理器并不自带任何加前缀的方法， 但很多人开发过一些能为常用属性加前缀的mixin；社区中也有一些库提供了这类mixin。
+* 类似[Stylus](http://stylus-lang.com/)、[LESS](http://lesscss.org/)或[Sass](http://sass-lang.com/)的预处理器并不自带任何加前缀的方法， 但很多人开发过一些能为常用属性加前缀的mixin；社区中也有一些库提供了这类mixin。
 
 ## 五、需要添加前缀的属性
 
