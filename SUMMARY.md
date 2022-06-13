@@ -85,7 +85,7 @@
   * [双向数据绑定](qian-duan-kuang-jia/shuang-xiang-shu-ju-bang-ding.md)
   * [前端组件化](qian-duan-kuang-jia/qian-duan-zu-jian-hua.md)
   * [前端路由原理](qian-duan-kuang-jia/qian-duan-lu-you-yuan-li.md)
-  * [Virtual DOM](qian-duan-kuang-jia/virtual-dom.md)
+  * [Diff 算法](qian-duan-kuang-jia/diff-suan-fa.md)
   * [状态管理](qian-duan-kuang-jia/zhuang-tai-guan-li.md)
   * [变化检测](qian-duan-kuang-jia/bian-hua-jian-ce.md)
   * [CSS 方案](qian-duan-kuang-jia/css-fang-an.md)
