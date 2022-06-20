@@ -15,4 +15,7 @@
 * [Frontend Developer Roadmap](https://roadmap.sh/frontend)
 * [前端面试之道](https://juejin.cn/book/6844733763675488269)
 * [前端面试复习计划](https://juejin.cn/post/7061588533214969892)
+* [重学前端](https://doc.vercel.app/frontend/)
+* [剑指前端 Offer](https://febook.hzfe.org/awesome-interview/)
+* [前端手册](http://fe.leozhang2018.me/index.html)
 * [连八股文都不懂还指望在前端混下去么](https://juejin.cn/post/7016593221815910408)
