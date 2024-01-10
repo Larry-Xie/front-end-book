@@ -44,7 +44,7 @@
 
 两个不同源的网站是无法拿到对方的 Cookie 和 LocalStorage 的内容，但是可以通过如下方法来突破限制：
 
-* 对于**Cookie**，**只有在两个网页的一级域名相同**的情况下才能通过 **`document.domain` ** 来共享Cookie；
+* 对于**Cookie**，**只有在两个网页的一级域名相同**的情况下才能通过 **`document.domain`** 来共享Cookie；
 * 对于**LocalStorage** 和 IndexDB，无法通过 `document.domain` 来规避同源政策，需要**PostMessage** API；
 
 ### 1. Document.domain

@@ -14,12 +14,7 @@
 
 浏览器前缀的种类取决于浏览器渲染引擎（浏览器内核）的类别，所以有以下几种前缀。
 
-| 前缀       | 渲染引擎    | 相应浏览器                      |
-| -------- | ------- | -------------------------- |
-| -moz-    | Gecco   | Firefox                    |
-| -webkit- | Webkit  | Safari，早期Chrome，Andorid浏览器 |
-| -o-      | Presto  | 早期Opera                    |
-| -ms-     | Trident | IE，Edge                    |
+<table data-header-hidden><thead><tr><th></th><th width="221.33333333333331"></th><th></th></tr></thead><tbody><tr><td>前缀</td><td>渲染引擎</td><td>相应浏览器</td></tr><tr><td>-moz-</td><td>Gecco</td><td>Firefox</td></tr><tr><td>-webkit-</td><td>Webkit</td><td>Safari，早期Chrome，Andorid浏览器</td></tr><tr><td>-o-</td><td>Presto</td><td>早期Opera</td></tr><tr><td>-ms-</td><td>Trident</td><td>IE，Edge</td></tr></tbody></table>
 
 ## 三、浏览器前缀用法
 

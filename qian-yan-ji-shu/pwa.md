@@ -6,12 +6,12 @@
 
 ## 二、PWA 介绍
 
-### 1. 什么是 PWA？ <a href="#1.1-20-e4-bb-80-e4-b9-88-e6-98-af-20pwa-ef-bc-9f" id="1.1-20-e4-bb-80-e4-b9-88-e6-98-af-20pwa-ef-bc-9f"></a>
+### 1. 什么是 PWA？ <a href="#id-1.1-20-e4-bb-80-e4-b9-88-e6-98-af-20pwa-ef-bc-9f" id="id-1.1-20-e4-bb-80-e4-b9-88-e6-98-af-20pwa-ef-bc-9f"></a>
 
 * 渐进式 web 应用（Progressive Web App），是 Google 2016 年提出概念、2017 年落地的 web 技术，渐进式 web 应用 就是 实现了和原生应用相近的用户体验的网页应用
 * PWA 不单指一种技术，也是一种思想和概念，它的目的是 —— 通过一系列的 Web 技术去优化网页应用；提升其安全性，性能，流畅性，用户体验等指标；最后达到用户使用网页应用，就像在用 原生App 一样的效果
 
-### 2. 为什么会出现 PWA？ <a href="#1.2-c2-a0-e4-b8-ba-e4-bb-80-e4-b9-88-e4-bc-9a-e5-87-ba-e7-8e-b0-20pwa-ef-bc-9f" id="1.2-c2-a0-e4-b8-ba-e4-bb-80-e4-b9-88-e4-bc-9a-e5-87-ba-e7-8e-b0-20pwa-ef-bc-9f"></a>
+### 2. 为什么会出现 PWA？ <a href="#id-1.2-c2-a0-e4-b8-ba-e4-bb-80-e4-b9-88-e4-bc-9a-e5-87-ba-e7-8e-b0-20pwa-ef-bc-9f" id="id-1.2-c2-a0-e4-b8-ba-e4-bb-80-e4-b9-88-e4-bc-9a-e5-87-ba-e7-8e-b0-20pwa-ef-bc-9f"></a>
 
 原生App 使用起来很流畅，性能好，安全性也可以很高，这是它很显著的优势。但是缺点呢，也很明显，比如
 
@@ -21,7 +21,7 @@
 
 PWA 完美地避免了这些问题。
 
-### 3. 如何判断一个 web 应用是 PWA？ <a href="#1.3-c2-a0-e5-a6-82-e4-bd-95-e5-88-a4-e6-96-ad-e4-b8-80-e4-b8-aa-20web-20-e5-ba-94-e7-94-a8-e6-98-af" id="1.3-c2-a0-e5-a6-82-e4-bd-95-e5-88-a4-e6-96-ad-e4-b8-80-e4-b8-aa-20web-20-e5-ba-94-e7-94-a8-e6-98-af"></a>
+### 3. 如何判断一个 web 应用是 PWA？ <a href="#id-1.3-c2-a0-e5-a6-82-e4-bd-95-e5-88-a4-e6-96-a-d-e4-b8-80-e4-b8-aa-20web-20-e5-ba-94-e7-94-a8-e6-98-af" id="id-1.3-c2-a0-e5-a6-82-e4-bd-95-e5-88-a4-e6-96-a-d-e4-b8-80-e4-b8-aa-20web-20-e5-ba-94-e7-94-a8-e6-98-af"></a>
 
 在安装方式上，PWA 与 原生 App 有很大的不同。在实际使用上，PWA 与 原生 App 的差距非常小。
 
@@ -38,7 +38,7 @@ PWA 完美地避免了这些问题。
 
 ## 三、PWA 核心功能
 
-### 1. 何谓 Service Worker <a href="#2.1-20-e4-bd-95-e8-b0-93-c2-a0service-20worker" id="2.1-20-e4-bd-95-e8-b0-93-c2-a0service-20worker"></a>
+### 1. 何谓 Service Worker <a href="#id-2.1-20-e4-bd-95-e8-b0-93-c2-a0service-20worker" id="id-2.1-20-e4-bd-95-e8-b0-93-c2-a0service-20worker"></a>
 
 * Service Worker 是浏览器和网络之间的虚拟代理
 * Service Workes 运行在一个与 页面的 JavaScript 主线程 独立的线程上，它没有对 DOM 结构的访问权限，可以在不同上下文间 发送/接收 信息
@@ -46,7 +46,7 @@ PWA 完美地避免了这些问题。
 * Service Worker 不仅提供离线功能，还提供包括处理通知，在单独的线程上执行繁重的计算等功能
 * Service Worker 可以控制网络请求，修改网络请求，返回缓存的自定义响应，或合成响应；因为强大，所以 Service Workers 只能在安全的上下文中执行（即 HTTPS ）
 
-### 2. 注册 Service Worker <a href="#2.2-20-e6-b3-a8-e5-86-8c-20service-20worker" id="2.2-20-e6-b3-a8-e5-86-8c-20service-20worker"></a>
+### 2. 注册 Service Worker <a href="#id-2.2-20-e6-b3-a8-e5-86-8c-20service-20worker" id="id-2.2-20-e6-b3-a8-e5-86-8c-20service-20worker"></a>
 
 * 浏览器支持 Service Worker
 * Service Worker 的 注册路径 决定了它的 默认作用页面的范围，也就是 scope
@@ -70,9 +70,9 @@ PWA 完美地避免了这些问题。
 
 * 注册完成后，serviceWorker.js 文件会自动下载、安装、激活
 
-### 3. Service Worker 常用事件 <a href="#2.3-c2-a0service-20worker-20-e5-b8-b8-e7-94-a8-e4-ba-8b-e4-bb-b6" id="2.3-c2-a0service-20worker-20-e5-b8-b8-e7-94-a8-e4-ba-8b-e4-bb-b6"></a>
+### 3. Service Worker 常用事件 <a href="#id-2.3-c2-a0service-20worker-20-e5-b8-b8-e7-94-a8-e4-ba-8b-e4-bb-b6" id="id-2.3-c2-a0service-20worker-20-e5-b8-b8-e7-94-a8-e4-ba-8b-e4-bb-b6"></a>
 
-#### 3.1 install <a href="#2.3.1-20install" id="2.3.1-20install"></a>
+#### 3.1 install <a href="#id-2.3.1-20install" id="id-2.3.1-20install"></a>
 
 * install 事件发生在：浏览器安装并注册 Service Worker 时
 * event.waitUtil 用于在安装成功之前执行一些预装逻辑，建议只做一些轻量级和非常重要资源的缓存，以减少安装失败的概率，
@@ -113,7 +113,7 @@ PWA 完美地避免了这些问题。
 </script>
 ```
 
-#### 3.2 fetch  <a href="#2.3.2-20fetch-c2-a0" id="2.3.2-20fetch-c2-a0"></a>
+#### 3.2 fetch  <a href="#id-2.3.2-20fetch-c2-a0" id="id-2.3.2-20fetch-c2-a0"></a>
 
 * Service Worker 会从缓存中请求所需数据，从而提供离线应用功能
 * 当应用发起一个 http 请求时，可以使用 fetch 事件
@@ -179,7 +179,7 @@ _**整体流程**_
 
 ![](https://pic1.zhimg.com/80/v2-1d49eede76c14aada50e839296506488\_720w.jpg)
 
-### 4. Manifest <a href="#2.4-c2-a0manifest" id="2.4-c2-a0manifest"></a>
+### 4. Manifest <a href="#id-2.4-c2-a0manifest" id="id-2.4-c2-a0manifest"></a>
 
 想成为可安装网站，需要的准备工作：
 
@@ -188,7 +188,7 @@ _**整体流程**_
 3. 一个本设备上代表应用的图标
 4. 一个注册好的 Service Worker，可以让应用离线工作（这仅对于安卓设备上的 Chrome 浏览器是必需的）
 
-### 5. 清单文件 <a href="#2.5-20-e6-b8-85-e5-8d-95-e6-96-87-e4-bb-b6" id="2.5-20-e6-b8-85-e5-8d-95-e6-96-87-e4-bb-b6"></a>
+### 5. 清单文件 <a href="#id-2.5-20-e6-b8-85-e5-8d-95-e6-96-87-e4-bb-b6" id="id-2.5-20-e6-b8-85-e5-8d-95-e6-96-87-e4-bb-b6"></a>
 
 * 清单文件通常位于网页应用的根目录，包含很多有用的信息，比如：应用标题、应用图标路径、加载/启动画面的背景颜色等等
 * 这些信息在 浏览器安装 web 应用时、在主屏上显示应用时 需要的
@@ -230,7 +230,7 @@ _**整体流程**_
 12345678910111213141516171819202122232425262728
 ```
 
-### 6. 添加到主屏 <a href="#2.6-20-e6-b7-bb-e5-8a-a0-e5-88-b0-e4-b8-bb-e5-b1-8f" id="2.6-20-e6-b7-bb-e5-8a-a0-e5-88-b0-e4-b8-bb-e5-b1-8f"></a>
+### 6. 添加到主屏 <a href="#id-2.6-20-e6-b7-bb-e5-8a-a0-e5-88-b0-e4-b8-bb-e5-b1-8f" id="id-2.6-20-e6-b7-bb-e5-8a-a0-e5-88-b0-e4-b8-bb-e5-b1-8f"></a>
 
 * “添加到主屏” 是移动端浏览器才有的，它利用网页清单中的信息，在设备主屏上显示应用图标和文字
 * 用户访问 PWA 时，会出现一个弹框提示用户 “是否安装此应用”，用户确认之后，应用就被安装到主屏了
@@ -239,9 +239,9 @@ _**整体流程**_
 
 ![](https://img-blog.csdnimg.cn/20210927100126716.png)
 
-### 7. Push & Notification <a href="#2.7-c2-a0push-20-26-20notification" id="2.7-c2-a0push-20-26-20notification"></a>
+### 7. Push & Notification <a href="#id-2.7-c2-a0push-20-26-20notification" id="id-2.7-c2-a0push-20-26-20notification"></a>
 
-#### 7.1 何谓 推送/通知？ <a href="#2.7.1-20-e4-bd-95-e8-b0-93-20-e6-8e-a8-e9-80-81-2f-e9-80-9a-e7-9f-a5-ef-bc-9f" id="2.7.1-20-e4-bd-95-e8-b0-93-20-e6-8e-a8-e9-80-81-2f-e9-80-9a-e7-9f-a5-ef-bc-9f"></a>
+#### 7.1 何谓 推送/通知？ <a href="#id-2.7.1-20-e4-bd-95-e8-b0-93-20-e6-8e-a8-e9-80-81-2f-e9-80-9a-e7-9f-a5-ef-bc-9f" id="id-2.7.1-20-e4-bd-95-e8-b0-93-20-e6-8e-a8-e9-80-81-2f-e9-80-9a-e7-9f-a5-ef-bc-9f"></a>
 
 Push & Notification（推送和通知）通过推送API 和 通知API 来实现
 
@@ -251,7 +251,7 @@ Push & Notification（推送和通知）通过推送API 和 通知API 来实现
 * 推送和通知，是在浏览器外部实现的，跟 Service Worker 一样；因此，即使应用被隐藏到后台，甚至应用关闭，我们仍能 推送/通知 到用户
 * 推送API 和 通知API 可以独立工作，也可以结合使用
 
-#### 7.2 推送/通知需要的授权 <a href="#2.7.2-20-e6-8e-a8-e9-80-81-2f-e9-80-9a-e7-9f-a5-20-e9-9c-80-e8-a6-81-e7-9a-84-e6-8e-88-e6-9d-83" id="2.7.2-20-e6-8e-a8-e9-80-81-2f-e9-80-9a-e7-9f-a5-20-e9-9c-80-e8-a6-81-e7-9a-84-e6-8e-88-e6-9d-83"></a>
+#### 7.2 推送/通知需要的授权 <a href="#id-2.7.2-20-e6-8e-a8-e9-80-81-2f-e9-80-9a-e7-9f-a5-20-e9-9c-80-e8-a6-81-e7-9a-84-e6-8e-88-e6-9d-83" id="id-2.7.2-20-e6-8e-a8-e9-80-81-2f-e9-80-9a-e7-9f-a5-20-e9-9c-80-e8-a6-81-e7-9a-84-e6-8e-88-e6-9d-83"></a>
 
 * 当用户同意授权，PWA 就可以实现 推送 + 通知，也就是说授权同时控制这两个
 * 用户授权的结果有三种，default（默认），granted（同意） 或者 denied（拒绝）
@@ -269,7 +269,7 @@ Push & Notification（推送和通知）通过推送API 和 通知API 来实现
   });
 ```
 
-#### 7.3 关于推送 <a href="#2.7.3-20-e5-85-b3-e4-ba-8e-e6-8e-a8-e9-80-81" id="2.7.3-20-e5-85-b3-e4-ba-8e-e6-8e-a8-e9-80-81"></a>
+#### 7.3 关于推送 <a href="#id-2.7.3-20-e5-85-b3-e4-ba-8e-e6-8e-a8-e9-80-81" id="id-2.7.3-20-e5-85-b3-e4-ba-8e-e6-8e-a8-e9-80-81"></a>
 
 推送比通知要复杂，他的流程是这样的：
 
@@ -431,14 +431,14 @@ caches.match('/data.json').then(function(response) {
 * Windows Edge 也支持 PWA 了
 * 越来越多的游览器大厂，对 PWA 做出了支持和优化
 
-### 1. PWA 优势 <a href="#3.1-20pwa-20-e4-bc-98-e5-8a-bf" id="3.1-20pwa-20-e4-bc-98-e5-8a-bf"></a>
+### 1. PWA 优势 <a href="#id-3.1-20pwa-20-e4-bc-98-e5-8a-bf" id="id-3.1-20pwa-20-e4-bc-98-e5-8a-bf"></a>
 
 * 无需安装下载，只要访问一次他的网址，将其添加到设备桌面，就可持续使用
 * 发布不需要提交到 app 商店审核，更新迭代版本也不需要审核
 * 现有的 web 网页都能改进为 PWA， 能很快上线，实现业务、获取流量
 * 不需要开发 Android 和 IOS 两套不同的版本
 
-### 2. PWA 劣势 <a href="#3.2-20pwa-20-e5-8a-a3-e5-8a-bf" id="3.2-20pwa-20-e5-8a-a3-e5-8a-bf"></a>
+### 2. PWA 劣势 <a href="#id-3.2-20pwa-20-e5-8a-a3-e5-8a-bf" id="id-3.2-20pwa-20-e5-8a-a3-e5-8a-bf"></a>
 
 * 浏览器对 PWA 的技术支持还不够全面， 没有任何览器能 100% 支持所有 PWA
 * 需要通过第三方库才能调用底层硬件（如摄像头）

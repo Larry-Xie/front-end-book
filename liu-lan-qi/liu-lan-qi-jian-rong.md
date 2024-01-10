@@ -77,12 +77,7 @@ HTML 兼容问题涉及到的主要是不同的浏览器能识别和支持的标
 
 针对不同浏览器加上不同前缀来区别。
 
-| 前缀       | 渲染引擎    | 相应浏览器                      |
-| -------- | ------- | -------------------------- |
-| -moz-    | Gecco   | Firefox                    |
-| -webkit- | Webkit  | Safari，早期Chrome，Andorid浏览器 |
-| -o-      | Presto  | 早期Opera                    |
-| -ms-     | Trident | IE，Edge                    |
+<table data-header-hidden><thead><tr><th width="256.47129131140366"></th><th width="266.45493562231763"></th><th></th></tr></thead><tbody><tr><td>前缀</td><td>渲染引擎</td><td>相应浏览器</td></tr><tr><td>-moz-</td><td>Gecco</td><td>Firefox</td></tr><tr><td>-webkit-</td><td>Webkit</td><td>Safari，早期Chrome，Andorid浏览器</td></tr><tr><td>-o-</td><td>Presto</td><td>早期Opera</td></tr><tr><td>-ms-</td><td>Trident</td><td>IE，Edge</td></tr></tbody></table>
 
 正常的写法如下，把不带前缀的放最后，但通常不用手动写带前缀的，而是编译时通过插件来解决。
 

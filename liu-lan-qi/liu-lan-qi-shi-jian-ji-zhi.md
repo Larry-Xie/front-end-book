@@ -43,7 +43,7 @@ for (var key in body) {
 
 ## 三、事件注册
 
-我们一般使用 [**EventTarget.addEventListener()**](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener) **** 来注册事件，当该对象触发指定的事件时，指定的回调函数就会被执行。 事件目标可以是一个文档上的元素 `Element`,`Document`和`Window`或者任何其他支持事件的对象 (比如 `XMLHttpRequest`)`。`
+我们一般使用 [**EventTarget.addEventListener()**](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener) 来注册事件，当该对象触发指定的事件时，指定的回调函数就会被执行。 事件目标可以是一个文档上的元素 `Element`,`Document`和`Window`或者任何其他支持事件的对象 (比如 `XMLHttpRequest`)`。`
 
 `addEventListener()`的工作原理是将实现`EventListener`的函数或对象添加到调用它的`EventTarget`上的指定事件类型的事件侦听器列表中。语法如下：
 

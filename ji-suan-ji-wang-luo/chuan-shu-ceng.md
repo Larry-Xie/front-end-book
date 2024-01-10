@@ -69,14 +69,7 @@ TCP 首部如上图所示，比 UDP 首部要复杂很多。TCP 段的首部长�
 * 窗口小（Window Size）：表示还能接收多少字节的数据，用于流量控制；
 * TCP 标识符：
 
-| 标识符 |          全称         |                                         描述                                        |
-| :-: | :-----------------: | :-------------------------------------------------------------------------------: |
-| URG |      Urgent，紧急位     | 该字段为一表示本数据报的数据部分包含紧急信息，是一个高优先级数据报文，此时紧急指针有效。紧急数据一定位于当前数据包数据部分的最前面，紧急指针标明了紧急数据的尾部。 |
-| ACK | Acknowledgement，确认位 |                该字段为一表示确认号字段有效。此外，TCP 还规定在连接建立后传送的所有报文段都必须把 ACK 置为一。               |
-| PSH |       Push，推送位      |                     该字段为一表示接收端应该立即将数据 push 给应用层，而不是等到缓冲区满后再提交。                    |
-| RST |      Reset，重置位      |            该字段为一表示当前 TCP 连接出现严重问题，可能需要重新建立 TCP 连接，也可以用于拒绝非法的报文段和拒绝连接请求。           |
-| SYN | Synchronization，同步位 |        当SYN=1，ACK=0时，表示当前报文段是一个连接请求报文。当SYN=1，ACK=1时，表示当前报文段是一个同意建立连接的应答报文。        |
-| FIN |      Finish，终止位     |                                                                                   |
+<table><thead><tr><th width="175.00000000000003" align="center">标识符</th><th align="center">全称</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">URG</td><td align="center">Urgent，紧急位</td><td align="center">该字段为一表示本数据报的数据部分包含紧急信息，是一个高优先级数据报文，此时紧急指针有效。紧急数据一定位于当前数据包数据部分的最前面，紧急指针标明了紧急数据的尾部。</td></tr><tr><td align="center">ACK</td><td align="center">Acknowledgement，确认位</td><td align="center">该字段为一表示确认号字段有效。此外，TCP 还规定在连接建立后传送的所有报文段都必须把 ACK 置为一。</td></tr><tr><td align="center">PSH</td><td align="center">Push，推送位</td><td align="center">该字段为一表示接收端应该立即将数据 push 给应用层，而不是等到缓冲区满后再提交。</td></tr><tr><td align="center">RST</td><td align="center">Reset，重置位</td><td align="center">该字段为一表示当前 TCP 连接出现严重问题，可能需要重新建立 TCP 连接，也可以用于拒绝非法的报文段和拒绝连接请求。</td></tr><tr><td align="center">SYN</td><td align="center">Synchronization，同步位</td><td align="center">当SYN=1，ACK=0时，表示当前报文段是一个连接请求报文。当SYN=1，ACK=1时，表示当前报文段是一个同意建立连接的应答报文。</td></tr><tr><td align="center">FIN</td><td align="center">Finish，终止位</td><td align="center"></td></tr></tbody></table>
 
 * URG=1：该字段为一表示本数据报的数据部分包含紧急信息，是一个高优先级数据报文，此时紧急指针有效。紧急数据一定位于当前数据包数据部分的最前面，紧急指针标明了紧急数据的尾部。
 * ACK=1：该字段为一表示确认号字段有效。此外，TCP 还规定在连接建立后传送的所有报文段都必须把 ACK 置为一。
